@@ -5,7 +5,6 @@ var articleSchema = mongoose.Schema({
     describe: String,
     createDate: String,
     modifyDate: String,
-    tags: { type: Array, default: [] },
     status: String,
     pv: 0
 });
