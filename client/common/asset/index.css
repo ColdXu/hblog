@@ -1,0 +1,11 @@
+@import '../../../node_modules/normalize.css/normalize.css';
+
+.f-text-center {
+    text-align: center
+}
+
+.f-btn-inline {
+    display: inline-block;
+    width: 100%; 
+}
+
