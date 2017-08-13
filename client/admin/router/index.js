@@ -6,10 +6,10 @@ import Sso from '../page/sso';
 export default function () {
     return (
         <HashRouter>
-            <Switch component={App}>
-                <Route path="/" component={Home}></Route>
-                <Route path="sso" component={Sso}></Route>
-            </Switch>
+            <App>
+                <Route exact path='/' component={Home}/>
+                <Route path='/sso' component={Sso}/>
+            </App>
         </HashRouter>
     )
 }

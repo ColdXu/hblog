@@ -8,9 +8,8 @@ export default class extends React.Component {
 
     render() {
         const { children } = this.props;
-        console.log(this.props)
         return (
-            <div className="c-app">{this.props.children}</div>
+            <div className="c-header">sidebar</div>
         )
     }
 }
