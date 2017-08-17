@@ -1,6 +1,7 @@
 import { Grid, Typography, Button, TextField } from 'material-ui'
 import { addTest } from '../../store/user/action'
 import { connect } from 'react-redux'
+import * as userAction from '../../store/user/action';
 import {bindActionCreators} from 'redux';
 import './index.css';
 
@@ -16,8 +17,12 @@ class Login extends React.Component {
         })
     }
 
-    handleSubmit = () => {
-        this.props.actions.addTest('nihao')
+    handleSubmit = (e) => {
+        const { username, password } = this.state;
+        this.props.actions.login({
+            username,
+            password
+        })
     }
 
     render() {
@@ -73,6 +78,7 @@ export default connect(
     dispatch => ({
         actions: bindActionCreators({
             addTest,
+            ...userAction
         }, dispatch)
     })
 )(Login)

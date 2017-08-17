@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import router from './router';
-import { createStore, combineReducers } from 'redux'
+import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import '../common/asset/index.css';
 
@@ -18,7 +18,19 @@ const test = (state = testStore, action) => {
 const todoApp = combineReducers({
   test,
 })
-const store = createStore(todoApp)
+
+const testApplyMiddleware = store => next => action => {
+    // console.log('store', store)
+    // console.log('next', next)
+    // console.log('action', action)
+    if (typeof(action) === 'function') {
+        action(store.dispach);
+    }
+}
+
+const store = createStore(todoApp, applyMiddleware(
+    testApplyMiddleware
+))
 
 // store.subscribe((e) => {
 //     console.log(e)
