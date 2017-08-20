@@ -19,6 +19,8 @@ class Login extends React.Component {
 
     handleSubmit = (e) => {
         const { username, password } = this.state;
+        // console.log(this.props.actions.login)
+        console.log(this.props.actions)
         this.props.actions.login({
             username,
             password
@@ -33,7 +35,7 @@ class Login extends React.Component {
                     <Grid container spacing={24} justify="center">
                         <Grid className="p-sso-login-grid" item xs={11} sm={7} md={5} >
                             <div className="f-text-center">
-                                <Typography type="title" gutterBottom>Cold博客登录{this.props.test.test}</Typography>
+                                <Typography type="title" gutterBottom>Cold博客登录</Typography>
                             </div>
                             <TextField
                                 className="p-sso-login-input"
@@ -73,7 +75,7 @@ class Login extends React.Component {
 
 export default connect(
     state => ({
-            test: state.test
+            user: state.user
     }),
     dispatch => ({
         actions: bindActionCreators({
