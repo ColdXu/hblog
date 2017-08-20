@@ -8,6 +8,7 @@ const logger = require('koa-logger');
 const router = require('./router');
 const rest = require('./middleware/rest');
 const error = require('./middleware/error');
+const cors = require('koa2-cors');
 mongoose.Promise = require('bluebird');
 
 const DB_URL = 'mongodb://localhost:27017/blog';
@@ -16,6 +17,8 @@ const DB_URL = 'mongodb://localhost:27017/blog';
 mongoose.connect(DB_URL);
 
 app.keys = ['davinci'];
+
+app.use(cors());
 
 // session设置
 app.use(session({

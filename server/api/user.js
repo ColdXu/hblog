@@ -47,6 +47,8 @@ const post_login = async (ctx, next) => {
     if (user.password !== password) {
         return ctx.throw('user:password_error', '密码错误');
     }
+
+    console.log('nihao')
     ctx.session.user = user;
     ctx.rest();
 };
