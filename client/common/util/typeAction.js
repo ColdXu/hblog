@@ -9,7 +9,7 @@ export function createAction(...actions) {
     hanldeAction(actions, false);
     return getActionType();
 }
-
+ 
 /**
  * 创建同步action
  */
