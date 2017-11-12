@@ -1,13 +1,12 @@
 import * as apiUser from '../../../common/api/user';
-import { createAsyncAction }  from 'redux-action-tools'
+import type from '../../../common/util/actionTypes'
 
-
-const LOGIN = 'LOGIN';
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-const LOGIN_PENDING = 'LOGIN_PENDING';
-const LOGIN_FAIL = 'LOGIN_FAIL';
-
+// 登录
+type.defineType('LOGIN');
 export const login = params => ({
-    type: LOGIN,
+    type: type.types.LOGIN,
     payload: apiUser.login(params)
 })
+
+export const types = type.types;
+

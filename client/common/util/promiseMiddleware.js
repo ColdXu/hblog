@@ -1,3 +1,8 @@
+/**
+ * 派发异步状态 action
+ * @author cold <coldxuweb@163.com>
+ * @since 2017/8/20
+ */
 
 function isPromise(val) {
   return val && typeof val.then === 'function';

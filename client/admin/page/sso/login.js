@@ -19,8 +19,6 @@ class Login extends React.Component {
 
     handleSubmit = (e) => {
         const { username, password } = this.state;
-        // console.log(this.props.actions.login)
-        console.log(this.props.actions)
         this.props.actions.login({
             username,
             password
