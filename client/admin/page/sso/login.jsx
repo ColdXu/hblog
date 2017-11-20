@@ -2,8 +2,8 @@ import { Grid, Typography, Button, TextField } from 'material-ui'
 import { addTest } from '../../store/user/action'
 import { connect } from 'react-redux'
 import * as userAction from '../../store/user/action';
-import {bindActionCreators} from 'redux';
-import './index.css';
+import { bindActionCreators } from 'redux';
+import './index.less';
 
 class Login extends React.Component {
     state = {
@@ -29,14 +29,14 @@ class Login extends React.Component {
         const { state } = this;
         return (
             <div className="p-sso-login">
-                <div className="p-sso-login-content">
+                <div className="content">
                     <Grid container spacing={24} justify="center">
-                        <Grid className="p-sso-login-grid" item xs={11} sm={7} md={5} >
+                        <Grid className="grid" item xs={11} sm={7} md={5} >
                             <div className="f-text-center">
                                 <Typography type="title" gutterBottom>Cold博客登录</Typography>
                             </div>
                             <TextField
-                                className="p-sso-login-input"
+                                className="input"
                                 placeholder="请输入用户名"
                                 label="用户名"
                                 name="username"
@@ -46,7 +46,7 @@ class Login extends React.Component {
                                 fullWidth
                             />
                             <TextField
-                                className="p-sso-login-input"
+                                className="input"
                                 placeholder="请输入密码"
                                 label="密码"
                                 type="password"
@@ -57,7 +57,7 @@ class Login extends React.Component {
                                 fullWidth
                             />
                             <Button 
-                                className="p-sso-login-submit f-btn-inline" 
+                                className="submit f-btn-inline" 
                                 raised 
                                 color="primary"
                                 onClick={this.handleSubmit}>

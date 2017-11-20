@@ -10,8 +10,8 @@ module.exports = {
     context: ENTRY_PATH,
     devtool: 'inline-source-map',
     entry: {
-        blog: './blog/app.js',
-        admin: './admin/app.js',
+        blog: './blog/app.jsx',
+        admin: './admin/app.jsx',
     },
     output: {
         path: OUTPUT_PATH,
@@ -24,12 +24,12 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)$/,
                 exclude: [/node_modules/],
                 loader: 'babel-loader'
             },
             {
-                test: /\.css$/,
+                test: /\.(less|css)$/,
                 // exclude: [/node_modules/],
                 use: [
                     'style-loader',
@@ -72,7 +72,7 @@ module.exports = {
     },
 
     resolve: {
-        extensions: ['.tsx', '.ts', '.js']
+        extensions: ['.tsx', '.ts', '.js', '.jsx']
     },
 
     plugins: [
