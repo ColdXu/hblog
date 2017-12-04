@@ -7,7 +7,7 @@
     "watch": "webpack --watch", 
     "build": "webpack" 
   },
-  "dependencies": {
+  "dependencies": { 
     "axios": "^0.16.2", 
     "jsonwebtoken": "^7.4.1",
     "koa": "^2.0.0",
