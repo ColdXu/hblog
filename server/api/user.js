@@ -38,7 +38,9 @@ const post_regiser = async (ctx, next) => {
  */
 const post_login = async (ctx, next) => {
     const { username, password } = ctx.request.body;
+    console.log(username)
     const user = await User.findOne({ username });
+    console.log('user', user);
     
     if (!user) {
         return ctx.throw('user:not_registered', '用户名不存在');

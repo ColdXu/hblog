@@ -1,4 +1,4 @@
-import Header from '../../../common/component/Header';
+import Header from '../../../common/component/header';
 
 export default class extends React.Component { 
     constructor(props) {

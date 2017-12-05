@@ -1,6 +1,6 @@
 import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom';
-import App from '../component/App';
-import Layout from '../component/Layout';
+import App from '../component/app';
+import Layout from '../component/layout';
 import Home from '../page/home';
 import Sso from '../page/sso';
 

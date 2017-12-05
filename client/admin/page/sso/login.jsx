@@ -73,7 +73,7 @@ class Login extends React.Component {
 
 export default connect(
     state => ({
-            user: state.user
+        user: state.user
     }),
     dispatch => ({
         actions: bindActionCreators({
