@@ -1,7 +1,7 @@
 ## 个人博客系统
 
 ### 接口文档
-|method   |api    |describe               |
+|method|api    |describe               |
 |----|----|----|
 |`post`     |/api/user/regiser      | 注册 |
 |`get`      |/api/logout            | 注销 |
