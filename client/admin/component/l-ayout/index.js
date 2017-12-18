@@ -1,6 +1,6 @@
-import Header from '../../../common/component/header';
+import Header from '../../../common/component/h-eader';
 
-export default class extends React.Component { 
+export default class extends React.Component {
     constructor(props) {
         super(props)
     }
