@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "jsonwebtoken": "^7.4.1", 
+    "jsonwebtoken": "^7.4.1",
     "koa": "^2.0.0",
     "koa-bodyparser": "^2.0.1",
     "koa-json": "^1.1.1",
