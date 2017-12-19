@@ -11,4 +11,4 @@
 |`get`      |/api/admin/article/{id}| 获取文章|
 |`delete`   |/api/admin/article/{id}| 删除文章|
 |`put`      |/api/admin/article/{id}| 文章|
-1
+1 
