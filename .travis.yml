@@ -10,7 +10,7 @@ after_script:
   - cd ./dist
   - git init
   - git config user.name "coldxu"
-  - git config user.email "coldxu@163.com"
+  - git config user.email "coldxuweb@163.com"
   - git add .
   - git commit -m "Update docs"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:hblog
