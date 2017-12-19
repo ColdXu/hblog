@@ -4,16 +4,18 @@ node_js:
   - 9
 
 script:
-  - npm run build
+  # - npm run build
 
 after_script:
+  - mkdir dist
+  - touch 'hello' >> 'index.html'
   - cd ./dist
   - git init
   - git config user.name "coldxu"
   - git config user.email "coldxu@163.com"
   - git add .
   - git commit -m "Update docs"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" hblog:hblog
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 
 env:
  global:
