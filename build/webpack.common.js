@@ -1,25 +1,17 @@
+
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ENTRY_PATH = path.resolve(__dirname, './client');
-const OUTPUT_PATH = path.resolve(__dirname, './dist');
+const config = require('./config');
 
 module.exports = {
-    context: ENTRY_PATH,
-    devtool: 'inline-source-map',
-    entry: {
-        blog: './blog/app.jsx',
-        admin: './admin/app.jsx',
-    },
+    context: config.ENTRY_PATH,
+    entry: config.CLIENT_ENTRY,
     output: {
-        path: OUTPUT_PATH,
-        filename: '[name].bundle.js',
-    },
-    devServer: {
-        contentBase: OUTPUT_PATH,
-        hot: true
+        path: config.OUTPUT_PATH,
+        filename: '[name].[hash:6].bundle.js',
     },
     module: {
         rules: [
@@ -81,29 +73,35 @@ module.exports = {
         //     allChunks: true
         // }),
 
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common'
+        }),
+
         new HtmlWebpackPlugin({
             title: '主页',
-            template: ENTRY_PATH + '/blog.html',
+            template: path.resolve(config.CLIENT_PATH, './tpl.html'),
             filename: 'blog.html',
-            chunks: ['blog']
+            chunks: ['blog', 'common']
         }),
 
         new HtmlWebpackPlugin({
             title: '管理后台',
-            template: ENTRY_PATH + '/admin.html',
+            template: path.resolve(config.CLIENT_PATH, './tpl.html'),
             filename: 'admin.html',
-            chunks: ['admin']
+            chunks: ['admin', 'common']
         }),
-
 
         new webpack.ProvidePlugin({
             React: 'react',
             _: 'lodash'
         }),
-
-        new CleanWebpackPlugin(['dist']),
-
-        new webpack.HotModuleReplacementPlugin()
+        new CleanWebpackPlugin(
+            ['dist'],
+            {
+                root: config.DIRNAME,
+                dry: false,
+            }
+       ),
     ]
 }
 

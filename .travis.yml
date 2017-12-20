@@ -4,7 +4,7 @@ node_js:
   - 9
 
 script:
-  - npm run build
+  - npm run build-prd
 
 after_success: 
   - cd ./dist
@@ -12,7 +12,7 @@ after_success:
   - git config user.name "coldxu"
   - git config user.email "coldxuweb@163.com"
   - git add .
-  - git commit -m "Update docs"
+  - git commit -m "Update website"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:dist
 
 branches:
