@@ -13,6 +13,6 @@ module.exports = merge(webpackCommon, {
         new UglifyJSPlugin({
             sourceMap: true
         }),
-        new BundleAnalyzerPlugin()
+        // new BundleAnalyzerPlugin()
     ]
 })
