@@ -1,5 +1,8 @@
 ## 个人博客系统
 
+### 持续集成
+[Travis CI](https://www.travis-ci.org/)
+
 ### 接口文档
 |method|api    |describe               |
 |----|----|----|
