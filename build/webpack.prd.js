@@ -13,6 +13,9 @@ module.exports = merge(webpackCommon, {
         new UglifyJSPlugin({
             sourceMap: true
         }),
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+        }),
         // new BundleAnalyzerPlugin()
     ]
 })

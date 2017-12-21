@@ -6,8 +6,8 @@
     "server": "node ./build/server.js",
     "dev": "NODE_ENV=development npm run server",
     "prd": "NODE_ENV=production npm run server",
-    "build-dev": "webpack --config ./build/webpack.dev.js",
-    "build-prd": "webpack --config ./build/webpack.prd.js"
+    "build-dev": "NODE_ENV=production webpack --config ./build/webpack.dev.js",
+    "build-prd": "NODE_ENV=production webpack --config ./build/webpack.prd.js"
   },
   "dependencies": {
     "axios": "^0.16.2",
