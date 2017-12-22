@@ -1,6 +1,6 @@
 {
   "name": "hblog",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "start": "./node_modules/.bin/nodemon server/app.js",
     "server": "node ./build/server.js",
