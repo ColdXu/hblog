@@ -12,12 +12,9 @@ const options = {
 }
 
 let server;
+let config = ENV === 'development' ? webpackConfigDev : webpackConfigPrd;
 
-if (ENV === 'development') {
-    server = new WebpackDevServer(webpack(webpackConfigDev), options)
-} else {
-    server = new WebpackDevServer(webpack(webpackConfigPrd), options)
-}
+server = new WebpackDevServer(webpack(config), options)
 
 server.listen(3001, function() {
     console.log('服务已启动：http://localhost:3001')

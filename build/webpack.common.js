@@ -79,14 +79,14 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             title: '主页',
-            template: path.resolve(config.CLIENT_PATH, './tpl.html'),
+            template: path.resolve(config.SRC_PATH, './tpl.html'),
             filename: 'blog.html',
             chunks: ['blog', 'common']
         }),
 
         new HtmlWebpackPlugin({
             title: '管理后台',
-            template: path.resolve(config.CLIENT_PATH, './tpl.html'),
+            template: path.resolve(config.SRC_PATH, './tpl.html'),
             filename: 'admin.html',
             chunks: ['admin', 'common']
         }),
