@@ -27,6 +27,7 @@ class Login extends React.Component {
 
     render() {
         const { state } = this;
+        console.log(this.props)
         return (
             <div className="p-sso-login">
                 <div className="content">
@@ -63,6 +64,7 @@ class Login extends React.Component {
                                 onClick={this.handleSubmit}>
                                 登录
                             </Button>
+                            {this.props.user.info.code !== 0 && this.props.user.info.message}
                         </Grid>
                     </Grid>
                 </div>

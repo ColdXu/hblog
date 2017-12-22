@@ -2,18 +2,19 @@ import { types } from './action';
 const { LOGIN_SUCCESS, LOGIN_FAIL } = types;
 
 const initState = {
-    auth: false
+    auth: false,
+    info: {},
+
 }
 
 function reducer(state = initState, { payload, type }) {
     switch (type) {
         case LOGIN_SUCCESS:
-            console.log('success', payload)
+            return {...state, info: payload, auth: true}
             break;
 
         case LOGIN_FAIL:
-            console.log('fail', payload)
-            break;
+            return {...state, info: payload, auth: false}
     }
     
     return state;
