@@ -27,14 +27,13 @@ class Login extends React.Component {
 
     render() {
         const { state } = this;
-        console.log(this.props)
         return (
             <div className="p-sso-login">
                 <div className="content">
                     <Grid container spacing={24} justify="center">
                         <Grid className="grid" item xs={11} sm={7} md={5} >
                             <div className="f-text-center">
-                                <Typography type="title" gutterBottom>Cold博客登录</Typography>
+                                <Typography type="title" gutterBottom>登录</Typography>
                             </div>
                             <TextField
                                 className="input"
