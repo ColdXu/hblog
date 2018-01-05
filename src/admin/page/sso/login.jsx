@@ -7,7 +7,7 @@ import './index.less';
 
 class Login extends React.Component {
     state = {
-        username: '',
+        username: '', 
         password: ''
     }
 
