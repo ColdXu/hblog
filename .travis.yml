@@ -13,7 +13,7 @@ after_success:
   - git config user.email "coldxuweb@163.com"
   - git add .
   - git commit -m "Update website"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:dist
+  - git push --force --quiet "${GH_REF}private_token={GITEE_TOKEN}" master:master
 
 branches:
   only:
@@ -21,4 +21,4 @@ branches:
 
 env:
  global:
-   - GH_REF: github.com/ColdXu/hblog
+   - GH_REF: https://gitee.com/coldxuweb-dist/h-blog
