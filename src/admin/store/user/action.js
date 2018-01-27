@@ -5,7 +5,7 @@ import type from '../../../common/util/actionTypes'
 type.defineType('LOGIN');
 export const login = params => ({
     type: type.types.LOGIN,
-    payload: apiUser.login(params)
+    payload: 123
 })
 
 export const types = type.types;

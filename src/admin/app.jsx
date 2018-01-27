@@ -17,7 +17,7 @@ const operations = store => next => action => {
 const store = createStore(reducer, applyMiddleware(
     // thunk,
     promiseMiddleware,
-    operations,
+    // operations,
 ))
 
 const app = (

@@ -26,6 +26,7 @@ class Login extends React.Component {
     }
 
     render() {
+        console.log('nihao')
         const { state } = this;
         return (
             <div className="p-sso-login">
