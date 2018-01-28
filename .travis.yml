@@ -20,4 +20,4 @@ branches:
   - master
 env:
  global:
-   - GH_REF: git.coding.net/ColdXu/dist-blog.git   
+   - GH_REF: git.coding.net/ColdXu/dist-hblog.git   
