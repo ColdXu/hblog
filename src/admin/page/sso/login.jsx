@@ -62,7 +62,7 @@ class Login extends React.Component {
                                 raised 
                                 color="primary"
                                 onClick={this.handleSubmit}>
-                                登录
+                                登1录
                             </Button>
                             {this.props.user.info.code !== 0 && this.props.user.info.message}
                         </Grid>
