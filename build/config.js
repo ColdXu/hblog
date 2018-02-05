@@ -13,7 +13,7 @@ const getClientEntry = function() {
     const apps = ['blog', 'admin'];
     const entry = {};
     apps.forEach((name) => {
-        entry[name] = path.resolve(SRC_PATH, './' + name + '/app.jsx')
+        entry[name] = ['babel-polyfill', path.resolve(SRC_PATH, './' + name + '/app.jsx')]
     })
     return entry;
 }

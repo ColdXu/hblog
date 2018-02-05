@@ -2,23 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import router from './router';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-// import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
-import reducer from './store/reducer';
+import { reducer, actions } from './store';
 import promiseMiddleware from '../common/util/promiseMiddleware';
 import '../common/asset/index.css';
 
-const operations = store => next => action => {
-    // console.log('nex t', action.type) 
-    next(action);
-}
-
+const sagaMiddleware = createSagaMiddleware()
 
 const store = createStore(reducer, applyMiddleware(
     // thunk,
-    promiseMiddleware,
+    // promiseMiddleware,
+    sagaMiddleware,
     // operations,
 ))
+sagaMiddleware.run(...actions)
+
 
 const app = (
     <Provider store={store}>

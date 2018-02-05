@@ -19,14 +19,14 @@ class Login extends React.Component {
 
     handleSubmit = (e) => {
         const { username, password } = this.state;
-        this.props.actions.login({
-            username,
-            password
-        })
+        this.props.dispatch({type: 'user/login'})
+        // this.props.actions.login2({
+        //     username,
+        //     password
+        // })
     }
 
     render() {
-        console.log('nihao')
         const { state } = this;
         return (
             <div className="p-sso-login">
@@ -77,10 +77,4 @@ export default connect(
     state => ({
         user: state.user
     }),
-    dispatch => ({
-        actions: bindActionCreators({
-            addTest,
-            ...userAction
-        }, dispatch)
-    })
 )(Login)

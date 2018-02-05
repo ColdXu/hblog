@@ -1,12 +1,11 @@
 import * as apiUser from '../../../common/api/user';
-import type from '../../../common/util/actionTypes'
+import { call, put, take } from 'redux-saga/effects'
+import { takeEvery } from 'redux-saga'
 
-// 登录
-type.defineType('LOGIN');
-export const login = params => ({
-    type: type.types.LOGIN,
-    payload: 123
-})
+function* login() {
+    console.log('nihao')
+} 
 
-export const types = type.types;
-
+export default function* () {
+    yield* takeEvery('user/login', login)
+}
