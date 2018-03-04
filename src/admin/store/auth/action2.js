@@ -3,7 +3,7 @@ import { call, put, take } from 'redux-saga/effects'
 import { takeEvery } from 'redux-saga'
 
 export default {
-    name: 'user',
+    name: 'user2',
     effects: {
         *logout() {
             console.log('logout')

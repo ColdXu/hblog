@@ -4,7 +4,6 @@ const initState = {
     info: {},
 }
 function reducer(state = initState, { payload, type }) {
-    console.log(type)
     switch (type) {
         case 'LOGIN_SUCCESS':
             console.log('ok')
