@@ -5,13 +5,11 @@ const initState = {
 }
 function reducer(state = initState, { payload, type }) {
     switch (type) {
-        case 'LOGIN_SUCCESS':
-            console.log('ok')
+        case 'auth/login/success':
             return {...state, info: payload, auth: true}
             break;
 
         case 'LOGIN_FAIL':
-            console.log('nihao')
             return {...state, info: payload, auth: false}
     }
     

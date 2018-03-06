@@ -17,22 +17,12 @@ class Login extends React.Component {
         })
     }
 
-    handleSubmit = (e) => {
+    handleSubmit  = async (e)  => {
         const { username, password } = this.state;
-        this.props.dispatch({type: 'user/login'})
-        // this.props.actions.login2({
-        //     username,
-        //     password
-        // })
-    }
-
-    handleSubmit2 = (e) => {
-        // const { username, password } = this.state;
-        this.props.dispatch({type: 'user/logout'})
-        // this.props.actions.login2({
-        //     username,
-        //     password
-        // })
+        this.props.dispatch({type: 'auth/login', payload: {
+            username,
+            password
+        }})
     }
 
     render() {
@@ -71,14 +61,7 @@ class Login extends React.Component {
                                 raised 
                                 color="primary"
                                 onClick={this.handleSubmit}>
-                                登1录
-                            </Button>
-                            <Button 
-                                className="submit f-btn-inline" 
-                                raised 
-                                color="primary"
-                                onClick={this.handleSubmit2}>
-                                登录2
+                                登录
                             </Button>
                             {this.props.user.info.code !== 0 && this.props.user.info.message}
                         </Grid>

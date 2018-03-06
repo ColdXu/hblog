@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 @withRouter
 @connect(
     state => ({
-        user: state.user
+        auth: state.auth
     })
 )
 
 export default class extends React.Component {
 
     componentWillMount() {
-        if (!this.props.user.auth) {
+        if (!this.props.auth.auth) {
             this.props.history.push('/login');
         }
     }

@@ -16,8 +16,8 @@ const store = createStore(reducer, applyMiddleware(
     sagaMiddleware,
     // operations,
 ))
-console.log(actions)
-sagaMiddleware.run(...actions)
+// console.log(actions)
+sagaMiddleware.run(actions)
 
 
 const app = (

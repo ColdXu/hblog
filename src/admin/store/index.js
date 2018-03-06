@@ -3,23 +3,25 @@ import { takeLatest } from 'redux-saga';
 const context = require.context('./', true, /\.js$/);
 const keys = context.keys().filter(item => item !== './index.js');
 
-import user from './user/reducer';
-import userAction from './user/action';
 
-const reducer2 = keys.reduce((memo, key) => {
-    memo[key.match(/([^/]+)\.js$/)[1]] = context(key).default;
+// 自动导入store action.js reduce.js文件
+const memo = keys.reduce((memo, key) => {
+    let keyname = key.split('/')[1]
+    memo[key.match(/([^/]+)\.js$/)[1]] = {
+        [keyname]: context(key).default,
+        ...memo[key.match(/([^/]+)\.js$/)[1]]
+    };
     return memo;
 }, {});
 
-
-export const reducer = combineReducers({
-    user
-})
-
-userAction.rootRun = function* () {
-    for (let key in userAction.effects) {
-        yield takeLatest(userAction.name + '/' + key, userAction.effects[key]);
+// 运行所有action到rootRun
+const rootRun = function* () {
+    for (let key in memo.action) {
+        for (let key2 in memo.action[key].effects) {
+            yield takeLatest(memo.action[key].name + '/' + key2, memo.action[key].effects[key2]);
+        }
     }
 }
-
-export const actions = [userAction.rootRun];
+// 合并reduce
+export const reducer = combineReducers(memo.reduce)
+export const actions = rootRun;

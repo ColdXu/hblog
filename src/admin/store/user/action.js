@@ -6,10 +6,10 @@ export default {
     name: 'user',
     effects: {
         *logout() {
-            console.log('logout')
+            console.log('logout');
         },
         *login() {
-            console.log('nihao')
+            console.log('user-login');
         },
     }
 }
