@@ -1,7 +1,6 @@
 
 import { MuiThemeProvider, createPalette, createMuiTheme } from 'material-ui/styles';
 import { blue } from 'material-ui/colors';
-
 import './index.css';
 
 export default class extends React.Component {
@@ -12,13 +11,13 @@ export default class extends React.Component {
     render() {
         const { children } = this.props;
         const theme = createMuiTheme({
-            palette: createPalette({
-                primary: blue
-            }),
+            // palette: createPalette({
+            //     primary: blue
+            // }),
         });
 
         return (
-            <MuiThemeProvider className="app" theme={theme}>
+            <MuiThemeProvider theme={theme}>
                 {this.props.children}
             </MuiThemeProvider>
         )

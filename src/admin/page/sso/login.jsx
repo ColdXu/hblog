@@ -58,7 +58,8 @@ class Login extends React.Component {
                             />
                             <Button 
                                 className="submit f-btn-inline" 
-                                raised 
+                                raised={'true'}
+                                variant="raised"
                                 color="primary"
                                 onClick={this.handleSubmit}>
                                 登录

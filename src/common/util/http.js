@@ -1,5 +1,7 @@
 import axios from 'axios';
 import config from '../config';
+import message from '../component/message'
+
 
 var instance = axios.create({
   baseURL: config.API_BASE,
@@ -17,9 +19,19 @@ instance.interceptors.request.use(function(config) {
 });
 
 instance.interceptors.response.use(function(response) {
-    return response.data;
+    if (response.data.code !== 0) {
+        message.success();
+        return Promise.reject(response.data)
+    } else {
+        return response.data;
+    }
 }, function(error) {
+    
     return Promise.reject(error)
+   
 });
+
+
+
 
 export default instance;
