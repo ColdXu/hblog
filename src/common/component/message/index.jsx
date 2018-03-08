@@ -1,7 +1,7 @@
 import { Snackbar } from 'material-ui'
 import ReactDOM from 'react-dom';
 import { withStyles } from 'material-ui/styles';
-import {lightGreen} from 'material-ui/colors';
+import {blue, orange} from 'material-ui/colors';
 
 function message(text, time, status) {
     const div = document.createElement('div');
@@ -26,11 +26,11 @@ message.error = function(text = 'hello', time = 3000) {
 
 const styles = {
     success: {
-      background: lightGreen[800]
+      background: blue[500]
     },
 
     error: {
-        background: lightGreen[800]
+        background: orange[500]
     }
 };
 @withStyles(styles)
@@ -54,7 +54,7 @@ class Snack extends React.Component {
                 anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 SnackbarContentProps={{
                 'aria-describedby': 'message-id',
-                className: this.props.classes[this.props.status]
+                // className: this.props.classes[this.props.status]
                 }}
                 open={this.state.open}
                 autoHideDuration={this.props.time}

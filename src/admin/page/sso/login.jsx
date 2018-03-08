@@ -1,11 +1,15 @@
 import { Grid, Typography, Button, TextField } from 'material-ui'
-import { addTest } from '../../store/user/action'
 import { connect } from 'react-redux'
-import * as userAction from '../../store/user/action';
 import { bindActionCreators } from 'redux';
+import history from '../../../common/util/history'
 import './index.less';
 
-class Login extends React.Component {
+@connect(
+    state => ({
+        user: state.user
+    }),
+)
+export default class extends React.Component {
     state = {
         username: '', 
         password: ''
@@ -17,14 +21,14 @@ class Login extends React.Component {
         })
     }
 
-    handleSubmit  = async (e)  => {
+    handleSubmit = (e)  => {
         const { username, password } = this.state;
-        this.props.dispatch({type: 'auth/login', payload: {
+        this.props.dispatch({type: 'user/login', payload: {
             username,
             password
         }})
     }
-
+    
     render() {
         const { state } = this;
         return (
@@ -33,7 +37,8 @@ class Login extends React.Component {
                     <Grid container spacing={24} justify="center">
                         <Grid className="grid" item xs={11} sm={7} md={5} >
                             <div className="f-text-center">
-                                <Typography type="title" gutterBottom>登录</Typography>
+                                <Typography variant="title">LOGIN</Typography>
+                                <Typography variant="caption">登录</Typography>
                             </div>
                             <TextField
                                 className="input"
@@ -59,8 +64,8 @@ class Login extends React.Component {
                             <Button 
                                 className="submit f-btn-inline" 
                                 raised={'true'}
-                                variant="raised"
                                 color="primary"
+                                variant="raised"
                                 onClick={this.handleSubmit}>
                                 登录
                             </Button>
@@ -73,8 +78,3 @@ class Login extends React.Component {
     }
 }
 
-export default connect(
-    state => ({
-        user: state.user
-    }),
-)(Login)

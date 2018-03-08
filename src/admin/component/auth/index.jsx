@@ -4,24 +4,20 @@ import { connect } from 'react-redux'
 @withRouter
 @connect(
     state => ({
-        auth: state.auth
+        user: state.user
     })
 )
-
 export default class extends React.Component {
+    // componentWillReceiveProps(nextProps) {
+    //     console.log(nextProps)
+    //     if (!nextProps.user.auth || _.isEmpty(nextProps.user.info)) {
+    //         this.props.history.push('/login');
+    //     }
+    // }
 
-    componentWillMount() {
-        if (!this.props.auth.auth) {
-            this.props.history.push('/login');
-        }
-    }
     render() {
-        const { user, history } = this.props;
+        const { user, history, children } = this.props;
 
-        return (
-            <div>
-                <div>123123</div>
-            </div>
-        )
+        return children
     }
 }

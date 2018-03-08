@@ -22,6 +22,7 @@ const rootRun = function* () {
         }
     }
 }
+
 // 合并reduce
 export const reducer = combineReducers(memo.reduce)
 export const actions = rootRun;

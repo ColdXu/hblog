@@ -4,15 +4,25 @@ const initState = {
     info: {},
 }
 function reducer(state = initState, { payload, type }) {
+    
     switch (type) {
-        case 'LOGIN_SUCCESS':
-            console.log('ok')
+
+        // 获取用户信息
+        case 'user/getUserInfo/success':
             return {...state, info: payload, auth: true}
             break;
 
-        case 'LOGIN_FAIL':
-            console.log('nihao')
-            return {...state, info: payload, auth: false}
+        case 'user/getUserInfo/failure':
+            return {...state, info: {}, auth: false}
+
+
+        // 登录
+        case 'user/login/success':
+            return {...state, info: payload, auth: true}
+            break;
+
+        case 'user/login/failure':
+            return {...state, info: {}, auth: false}
     }
     
     return state;

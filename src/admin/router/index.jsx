@@ -7,7 +7,7 @@ import Sso from '../page/sso';
 
 const router = [
     {
-        path: '/',
+        path: '/home',
         title: '首页',
         component: Home,
     },

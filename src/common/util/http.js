@@ -6,6 +6,7 @@ import message from '../component/message'
 var instance = axios.create({
   baseURL: config.API_BASE,
   timeout: 3000,
+  withCredentials: true,
   headers: {
         'Content-Type': 'application/json'
     }
@@ -18,17 +19,20 @@ instance.interceptors.request.use(function(config) {
     return Promise.reject(error)
 });
 
-instance.interceptors.response.use(function(response) {
+instance.interceptors.response.use(function(response, config) {
     if (response.data.code !== 0) {
-        message.success();
+        if (!response.config.disabledMessage) {
+            message.error(response.data.message);
+        }
         return Promise.reject(response.data)
     } else {
         return response.data;
     }
 }, function(error) {
-    
+    if (!error.config.disabledMessage) {
+        message.error(error.data.message);
+    }
     return Promise.reject(error)
-   
 });
 
 
