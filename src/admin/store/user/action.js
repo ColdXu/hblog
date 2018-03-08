@@ -6,10 +6,6 @@ import history from '../../../common/util/history';
 export default {
     name: 'user',
     effects: {
-        *logout() {
-            console.log('logout');
-        },
-
         *getUserInfo() {
             try {
                 const data = yield call(apiUser.getUserInfo);
@@ -18,6 +14,7 @@ export default {
                     payload: data.data
                 })
             } catch (e) {
+                history.push('/login');
                 yield put({
                     type: 'user/getUserInfo/failure',
                     payload: {}
@@ -26,19 +23,19 @@ export default {
         },
 
         *login({payload}) {
-            // try {
+            try {
                 const data = yield call(apiUser.login, payload);
                 yield put({
                     type: 'user/login/success',
                     payload: data.data
                 })
                 history.push('/')
-            // } catch(e) {
-            //     yield put({
-            //         type: 'user/login/failure',
-            //         payload: e
-            //     })
-            // }
+            } catch(e) {
+                yield put({
+                    type: 'user/login/failure',
+                    payload: e
+                })
+            }
         },
     }
 }

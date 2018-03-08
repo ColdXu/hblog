@@ -8,12 +8,12 @@ import { connect } from 'react-redux'
     })
 )
 export default class extends React.Component {
-    // componentWillReceiveProps(nextProps) {
-    //     console.log(nextProps)
-    //     if (!nextProps.user.auth || _.isEmpty(nextProps.user.info)) {
-    //         this.props.history.push('/login');
-    //     }
-    // }
+
+    componentWillMount() {
+        if (!this.props.user.auth && !_.isEmpty(this.props.user.info)) {
+            this.props.history.push('/login');
+        }
+    }
 
     render() {
         const { user, history, children } = this.props;

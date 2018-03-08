@@ -12,10 +12,6 @@ function reducer(state = initState, { payload, type }) {
             return {...state, info: payload, auth: true}
             break;
 
-        case 'user/getUserInfo/failure':
-            return {...state, info: {}, auth: false}
-
-
         // 登录
         case 'user/login/success':
             return {...state, info: payload, auth: true}

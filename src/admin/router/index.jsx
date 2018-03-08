@@ -4,6 +4,7 @@ import Layout from '../component/layout';
 import Auth from '../component/auth';
 import Home from '../page/home';
 import Sso from '../page/sso';
+import Article from '../page/article';
 
 const router = [
     {
@@ -17,6 +18,16 @@ const router = [
         component: Sso.Login,
         layout: false,
         auth: false,
+    },
+    {
+        path: '/article/create',
+        title: '创建',
+        component: Article.Create,
+    },
+    {
+        path: '/article/list',
+        title: '创建',
+        component: Article.List,
     },
 ];
 
