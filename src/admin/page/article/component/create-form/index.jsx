@@ -23,9 +23,16 @@ const styles = theme => ({
     rightButtonIcon: {
         marginLeft: theme.spacing.unit * 2,
     },
+    releaseButton: {
+        marginLeft: theme.spacing.unit * 2,
+        background: '#689F38',
+    },
     iconSmall: {
       fontSize: 20,
     },
+    textfield: {
+        marginTop: -10,
+    }
   });
 
   @withStyles(styles)
@@ -36,7 +43,7 @@ export default class extends React.Component {
 
         this.state = {
             title: '',
-            describe: '',
+            content: '',
         };
       }
 
@@ -51,10 +58,10 @@ export default class extends React.Component {
     }
 
     handleSave = () => {
-        const { title, describe } = this.state;
+        const { title, content } = this.state;
         this.props.onSave({
             title,
-            describe,
+            content,
         })
     }
 
@@ -69,62 +76,54 @@ export default class extends React.Component {
     }
 
     render() {
-        const { title, describe } = this.state;
+        const { title, content } = this.state;
         const { classes } = this.props;
        
         return (
-            <div>
-            <div className="article-createform-btns">
-            <Button
-                onClick={this.handBack}
-                className={classes.rightButtonIcon}
-                raised={'true'}
-                variant="raised"
-                size="small">
-                返回
-            </Button>
-            <Button
-                onClick={this.handleSave}
-                className={classes.rightButtonIcon}
-                raised={'true'}
-                color="primary"
-                variant="raised"
-                size="small">
-                保存
-                <Save className={classnames(classes.iconSmall, classes.rightIcon)} />
-            </Button>
-            <Button 
-                onClick={this.handleRelease}
-                className={classes.rightButtonIcon}
-                raised={'true'}
-                color="primary"
-                variant="raised"
-                size="small">
-                发布
-                <Send className={classnames(classes.iconSmall, classes.rightIcon)}/>
-                
-            </Button>
-            </div>
-            <TextField
-                onChange={this.handleFieldChange}
-                value={title}
-                className="input"
-                placeholder="请输入博文标题"
-                label="标题"
-                type="test"
-                name="title"
-                margin="normal"
-                fullWidth
-            />
-            <ReactQuill 
-                theme="snow"
-                value={describe}
-                onChange={(val)=>{
-                    this.setState({
-                        describe: val
-                    })
-                }}
+            <div className="article-createform">
+                <div className="article-createform-btns">
+                <Button
+                    onClick={this.handleSave}
+                    className={classes.rightButtonIcon}
+                    raised={'true'}
+                    color="primary"
+                    variant="raised"
+                    size="small">
+                    保存
+                    <Save className={classnames(classes.iconSmall, classes.rightIcon)} />
+                </Button>
+                <Button
+                    onClick={this.handleRelease}
+                    className={classes.releaseButton}
+                    raised={'true'}
+                    color="primary"
+                    variant="raised"
+                    size="small">
+                    发布
+                    <Send className={classnames(classes.iconSmall, classes.rightIcon)}/>
+                    
+                </Button>
+                </div>
+                <TextField
+                    onChange={this.handleFieldChange}
+                    value={title}
+                    className={classes.textfield}
+                    placeholder="请输入博文标题"
+                    label="标题"
+                    type="test"
+                    name="title"
+                    margin="normal"
+                    fullWidth
                 />
+                <ReactQuill 
+                    theme="snow"
+                    value={content}
+                    onChange={(val)=>{
+                        this.setState({
+                            content: val
+                        })
+                    }}
+                    />
             </div>
         )
     }

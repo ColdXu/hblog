@@ -21,9 +21,7 @@ export default class extends React.Component {
     render() {
 
         return (
-            <div>
-                <CreateForm onSave={this.handleSave}/>
-            </div>
+            <CreateForm onSave={this.handleSave}/>
         )
     }
 }

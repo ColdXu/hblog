@@ -9,10 +9,10 @@ export function getAdminArticleList() {
 // 创建文章
 export function createAdminArticle({
     title,
-    describe,
+    content,
 }) {
     return http.post('admin/article', {
         title,
-        describe,
+        content,
     })
 }

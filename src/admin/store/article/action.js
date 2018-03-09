@@ -25,15 +25,8 @@ export default {
             try {
                const data = yield call(apiArticle.createAdminArticle, payload);
                message.success('保存成功')
-            //    yield put({
-            //        type: 'article/createAdminArticle/success',
-            //        payload: data
-            //    })
-             } catch(e) {
-            //    yield put({
-            //        type: 'article/createAdminArticle/failure',
-            //    })
-           }
+               history.push(`/article/create/${data.data.id}`)
+             } catch(e) {}
        },
     }
 }
