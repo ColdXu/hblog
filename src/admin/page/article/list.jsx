@@ -13,11 +13,17 @@ export default class extends React.Component {
         this.props.dispatch({type: 'article/getAdminArticleList'})
     }
 
+    handleEdit = (id) => {
+        this.props.history.push(`/article/create/${id}`)
+    }
+
     render() {
         const { article } = this.props;
         return (
             <div>
-                <List data={article.articleList}/>
+                <List 
+                    onEdit={this.handleEdit}
+                    data={article.articleList}/>
             </div>)
     }
 }

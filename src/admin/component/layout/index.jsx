@@ -53,7 +53,7 @@ const styles = theme => ({
         icon: HomeIcon,
       },
       {
-        title: '创建',
+        title: '写作',
         key: 'create',
         path: '/article/create',
         icon: AddIcon,
@@ -61,7 +61,7 @@ const styles = theme => ({
       {
         title: '博文列表',
         key: 'list',
-        path: '/article/list',
+        path: '/article',
         icon: NoteIcon,
       },
   ]

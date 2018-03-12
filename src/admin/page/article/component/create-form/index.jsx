@@ -25,7 +25,6 @@ const styles = theme => ({
     },
     releaseButton: {
         marginLeft: theme.spacing.unit * 2,
-        background: '#689F38',
     },
     iconSmall: {
       fontSize: 20,
@@ -40,44 +39,22 @@ export default class extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            title: '',
-            content: '',
-        };
-      }
-
-    handleChange = (editorState) => {
-        this.setState({
-            editorState
-        })
     }
 
-    handBack = () => {
-
+    handleChange = (name, value) => {
+        this.props.onChange(name, value)
     }
 
     handleSave = () => {
-        const { title, content } = this.state;
-        this.props.onSave({
-            title,
-            content,
-        })
+        this.props.onSave();
     }
 
     handleRelease = () => {
 
     }
 
-    handleFieldChange = (e) => {
-        this.setState({
-            title: e.target.value
-        })
-    }
-
     render() {
-        const { title, content } = this.state;
-        const { classes } = this.props;
+        const { classes, onChange, data } = this.props;
        
         return (
             <div className="article-createform">
@@ -105,8 +82,8 @@ export default class extends React.Component {
                 </Button>
                 </div>
                 <TextField
-                    onChange={this.handleFieldChange}
-                    value={title}
+                    onChange={(e) => this.handleChange('title', e.target.value)}
+                    value={data.title}
                     className={classes.textfield}
                     placeholder="请输入博文标题"
                     label="标题"
@@ -117,12 +94,8 @@ export default class extends React.Component {
                 />
                 <ReactQuill 
                     theme="snow"
-                    value={content}
-                    onChange={(val)=>{
-                        this.setState({
-                            content: val
-                        })
-                    }}
+                    value={data.content}
+                    onChange={(value) => this.handleChange('content', value)}
                     />
             </div>
         )

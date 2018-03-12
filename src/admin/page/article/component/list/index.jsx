@@ -32,7 +32,7 @@ const data = [
   @withStyles(styles)
 export default class extends React.Component {
     render() {
-        const { classes, data: {list = []} } = this.props;
+        const { classes, data: {list = []}, onEdit } = this.props;
         return (
         <Table className={classes.table}>
             <TableHead>
@@ -46,14 +46,14 @@ export default class extends React.Component {
         <TableBody>
           {list.map(n => {
             return (
-              <TableRow key={n._id}>
+              <TableRow key={n.id}>
                 <TableCell>{n.title}</TableCell>
                 <TableCell>{moment(n.createDate).format('YYYY-MM-DD')}</TableCell>
                 <TableCell>{n.pv}</TableCell>
                 <TableCell>
-                  <a href="javascript:;">编辑</a>
+                  <a href="javascript:;" onClick={() => onEdit(n.id)}>编辑</a>
                   &nbsp;|&nbsp;
-                  <a href="javascript:;">删除</a>
+                  <a href="javascript:;">{n.status === 'edit' ? '发布' : '撤回'}</a>
                 </TableCell>
               </TableRow>
             );

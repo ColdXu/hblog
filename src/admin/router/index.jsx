@@ -20,14 +20,21 @@ const router = [
         auth: false,
     },
     {
-        path: '/article/create',
+        path: '/article',
+        exact: true,
+        title: '博文列表',
+        component: Article.List,
+    },
+    {
+        path: '/article/create/:id',
         title: '创建',
         component: Article.Create,
     },
     {
-        path: '/article/list',
+        path: '/article/create',
         title: '创建',
-        component: Article.List,
+        exact: true,
+        component: Article.Create,
     },
 ];
 
@@ -45,11 +52,12 @@ const renderRouter = () => {
         component,
         layout = true,
         auth = true,
+        ...resData,
     }, key) => {
-        let route = <Route key={key} path={path} component={component} title={title} />
+        let route = <Route key={path} path={path} component={component} title={title} {...resData}/>
 
         if (auth) {
-            route = <Auth key={key}>{route}</Auth>
+            route = <Auth key={path}>{route}</Auth>
         }
 
         // 是否包装布局(header && sidear)
