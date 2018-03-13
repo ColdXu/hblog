@@ -14,7 +14,8 @@ module.exports = merge(webpackCommon, {
             sourceMap: true
         }),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+            'ENV': JSON.stringify('prd'),
         }),
         // new BundleAnalyzerPlugin()
     ]

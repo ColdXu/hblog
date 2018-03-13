@@ -1,8 +1,15 @@
 
-// const PROTOCOL = location.protocol;
+let env = ENV;
+let API_BASE = '';
 
-const API_BASE = 'http://localhost:8000/api/';
-// const API_BASE = location.origin;
+switch(env) {
+    case 'prd':
+        API_BASE = 'http://182.254.231.120:8000/api/';
+        break;
+    default: 
+        API_BASE = 'http://localhost:8000/api/';
+        break;
+}
 
 export default {
     API_BASE
