@@ -15,6 +15,7 @@ test
 |`delete`   |/api/admin/article/{id}| 删除文章|
 |`put`      |/api/admin/article/{id}| 文章| 
 
+
 ### 遇到的坑
 [启动service mongod start 报错](https://github.com/jingxinxin/tiankeng/issues/5)
 
