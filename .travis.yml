@@ -5,7 +5,7 @@ node_js:
 
 script:
   - npm run build-prd
-
+  
 after_success: 
   - cd ./dist
   - git init
