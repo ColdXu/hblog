@@ -17,7 +17,7 @@ after_success:
 
 branches:
   only:
-  - master
+    - master
 env:
  global:
    - GH_REF: git.coding.net/ColdXu/dist-hblog.git   
