@@ -19,6 +19,7 @@ export default class extends React.Component {
     render() {
         // const { articleList } = this.props.article;
         console.log(this);
+        console.log('hook')
         return (
             <div className="p-home">
                
