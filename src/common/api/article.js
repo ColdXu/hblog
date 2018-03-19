@@ -1,5 +1,9 @@
 import http from '../util/http';
 
+// 获取文章列表
+export function getArticleList() {
+    return http.get('article/list')
+}
 
 // 获取管理员文章列表
 export function getAdminArticleList() {
@@ -24,7 +28,7 @@ export function createAdminArticle({
     })
 }
 
-// 修复文章
+// 修改文章
 export function putAdminArticle({
     id,
     title,
@@ -37,4 +41,9 @@ export function putAdminArticle({
         status
     })
 }
+
+// 修改博文状态
+export function putAdminArticleStatus({id, status}) {
+    return http.put(`admin/article/${id}/${status}`)
+} 
 

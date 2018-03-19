@@ -17,11 +17,19 @@ export default class extends React.Component {
         this.props.history.push(`/article/create/${id}`)
     }
 
+    handleRelease = (item) => {
+        this.props.dispatch({type: 'article/putAdminArticleStatus', payload: {
+            id: item.id,
+            status: item === 'edit' ? 'publish' : 'edit',
+        }})
+    }
+
     render() {
         const { article } = this.props;
         return (
             <div>
-                <List 
+                <List
+                    onRelease={this.handleRelease}
                     onEdit={this.handleEdit}
                     data={article.articleList}/>
             </div>)

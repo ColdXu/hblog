@@ -50,7 +50,7 @@ export default class extends React.Component {
     }
 
     handleRelease = () => {
-
+        this.props.onRelease();
     }
 
     render() {

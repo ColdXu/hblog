@@ -1,5 +1,6 @@
 
-let env = ENV;
+// let env = __ENV__;
+let env = 'dev';
 let API_BASE = '';
 
 switch(env) {

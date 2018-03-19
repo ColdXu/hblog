@@ -45,5 +45,24 @@ export default {
             message.success('修改成功')
             } catch(e) {}
         },
+
+        //  修改博文状态
+       *putAdminArticleStatus({payload}) {
+        try {
+            const data = yield call(apiArticle.putAdminArticleStatus, payload);
+            if (payload.status === 'publish') {
+                message.success('下架成功')
+            } else {
+                message.success('撤回成功')
+            }
+            yield put({
+                type: 'article/putAdminArticleStatus/success',
+                payload: {
+                    id: payload.id,
+                }
+            })
+            
+        } catch(e) {}
+    },
     }
 }
