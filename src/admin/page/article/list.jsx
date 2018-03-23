@@ -20,7 +20,7 @@ export default class extends React.Component {
     handleRelease = (item) => {
         this.props.dispatch({type: 'article/putAdminArticleStatus', payload: {
             id: item.id,
-            status: item === 'edit' ? 'publish' : 'edit',
+            status: item.status === 'edit' ? 'publish' : 'edit',
         }})
     }
 

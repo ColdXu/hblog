@@ -2,22 +2,22 @@
 import { MuiThemeProvider, createPalette, createMuiTheme } from 'material-ui/styles';
 import { connect } from 'react-redux';
 import { blue } from 'material-ui/colors';
-import { withRouter } from 'react-router-dom';
 import { getUserInfo } from '../../../common/api/user'
+import Base from '../../../common/component/base';
 import './index.less';
-
+import * as asdf from 'react-router'
+console.log(asdf);
 const theme = createMuiTheme({
     palette: {
         primary: blue
     },
 });
-@withRouter
 @connect(
     state => ({
         user: state.user
     })
 )
-export default class extends React.Component {
+export default class extends Base {
     constructor(props) {
         super(props)
         this.props.dispatch({type: 'user/getUserInfo'})

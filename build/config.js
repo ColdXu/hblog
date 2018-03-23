@@ -9,11 +9,12 @@ const SRC_PATH = path.resolve(DIRNAME, './src');
 const OUTPUT_PATH = path.resolve(DIRNAME, './dist');
 
 // 前端项目入口文件
-const getClientEntry = function() {
+const getClientEntry = function(entrys = []) {
     const apps = ['blog', 'admin'];
     const entry = {};
     apps.forEach((name) => {
         entry[name] = ['babel-polyfill', path.resolve(SRC_PATH, './' + name + '/app.jsx')]
+        entry[name] = entry[name].concat(entrys);
     })
     return entry;
 }
@@ -22,5 +23,5 @@ module.exports = {
     DIRNAME: DIRNAME,
     SRC_PATH: SRC_PATH,
     OUTPUT_PATH: OUTPUT_PATH,
-    CLIENT_ENTRY: getClientEntry(),
+    getClientEntry: getClientEntry,
 }

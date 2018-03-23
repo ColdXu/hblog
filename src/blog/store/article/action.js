@@ -8,14 +8,27 @@ export default {
     name: 'article',
     effects: {
         //  获取列表
-        *getArticle({payload}) {
+        *getArticleList({payload}) {
             try {
-               const data = yield call(apiArticle.getArticle, payload);
+               const data = yield call(apiArticle.getArticleList, payload);
                yield put({
-                   type: 'article/getArticle/success',
+                   type: 'article/getArticleList/success',
                    payload: data
                })
              } catch(e) {}
        },
+
+       //  获取文章
+       *getArticle({payload}) {
+        try {
+           const data = yield call(apiArticle.getArticle, payload);
+           yield put({
+               type: 'article/getArticle/success',
+               payload: data
+           })
+         } catch(e) {}
+   },
+
+       
     }
 }

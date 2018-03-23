@@ -1,28 +1,25 @@
 import { Grid, Typography, Button, TextField } from 'material-ui'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom';
+import Base from '../../../common/component/base';
 import CreateForm from './component/create-form';
 
-@withRouter
 @connect(
     state => ({
         article: state.article
     }),
 )
 
-export default class extends React.Component {
+export default class extends Base {
 
     constructor(props) {
         super(props);
-        if (this.props.match.params.id) {
-            this.props.dispatch({type: 'article/getAdminArticle', payload: {id: this.props.match.params.id}})
+        console.log(this)
+        if (this.history.location.params.id) {
+            this.props.dispatch({type: 'article/getAdminArticle', payload: {id: this.history.location.params.id}})
         }
 
         this.state = {
-            formData: {
-                title: '',
-                content: ''
-            }
+            formData: this.props.article.data
         }
     }
 
@@ -30,8 +27,7 @@ export default class extends React.Component {
         if (!this.state.formData.title && !this.state.formData.content && !_.isEmpty(nextProps.article.data)) {
             this.setState({
                 formData: {
-                    title: nextProps.article.data.title,
-                    content: nextProps.article.data.content,
+                    ...nextProps.article.data,
                 }
             })
         }
@@ -46,9 +42,9 @@ export default class extends React.Component {
         }
         data.status = type === 'release' ? 'publish' : 'edit';
 
-        if (this.props.match.params.id) {
+        if (this.history.location.params.id) {
             this.props.dispatch({type: 'article/putAdminArticle', payload: {
-                id: this.props.match.params.id,
+                id: this.history.location.params.id,
                 ...data
             }})
         } else {

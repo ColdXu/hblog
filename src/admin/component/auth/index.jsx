@@ -1,22 +1,20 @@
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
-
-@withRouter
+import Base from '../../../common/component/base';
 @connect(
     state => ({
         user: state.user
     })
 )
-export default class extends React.Component {
+export default class extends Base {
 
     componentWillMount() {
         if (!this.props.user.auth && !_.isEmpty(this.props.user.info)) {
-            this.props.history.push('/login');
+            this.history.push('/login');
         }
     }
 
     render() {
-        const { user, history, children } = this.props;
+        const { user, children } = this.props;
 
         return children
     }

@@ -15,6 +15,11 @@ export function getAdminArticle({id}) {
     return http.get(`admin/article/${id}`)
 }
 
+// 获取详情文章
+export function getArticle({id}) {
+    return http.get(`article/${id}`)
+}
+
 // 创建文章
 export function createAdminArticle({
     title,

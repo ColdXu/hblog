@@ -1,21 +1,19 @@
-const WebpackDevServer = require('webpack-dev-server');
-const webpack = require('webpack');
 
+const middleware = require("webpack-dev-middleware");
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpack = require('webpack');
 const webpackConfigDev = require('./webpack.dev');
 const webpackConfigPrd = require('./webpack.prd');
+const config = require('./config');
+const express = require('express');
+const app = express();
 
 const ENV = process.env.NODE_ENV;
+let compiler = webpack(ENV === 'development' ? webpackConfigDev : webpackConfigPrd);
 
-const options = {
-    contentBase: 'dist',
-    publicPath: '',
-}
+app.use(middleware(compiler))
+app.use(webpackHotMiddleware(compiler))
 
-let server;
-let config = ENV === 'development' ? webpackConfigDev : webpackConfigPrd;
-
-server = new WebpackDevServer(webpack(config), options)
-
-server.listen(3001, function() {
+app.listen(3001, () => {
     console.log('服务已启动：http://localhost:3001')
 })

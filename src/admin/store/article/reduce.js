@@ -6,6 +6,8 @@ const initState = {
     data: {
         title: '',
         content: '',
+        tag: '',
+        cover: '',
     },
 }
 function reducer(state = initState, { payload, type }) {

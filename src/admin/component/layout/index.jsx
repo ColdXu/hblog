@@ -7,6 +7,7 @@ import Drawer from 'material-ui/Drawer';
 import MenuIcon from 'material-ui-icons/Menu';
 
 import { MenuList, MenuItem } from 'material-ui/Menu';
+import history from '../../../common/util/history'
 
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import HomeIcon from 'material-ui-icons/Home';
@@ -14,7 +15,7 @@ import AddIcon from 'material-ui-icons/Add';
 import NoteIcon from 'material-ui-icons/Note';
 import { withStyles } from 'material-ui/styles'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import Base from '../../../common/component/base';
 
 import './index.less';
 
@@ -66,21 +67,19 @@ const styles = theme => ({
       },
   ]
 
-  @withRouter
   @connect(
       state => ({
           user: state.user
       })
   )
-class Layout extends React.Component {
+class Layout extends Base {
     constructor(props) {
         super(props)
     }
 
-
     handleListClick = (item) => {
-        if (this.props.location.pathname !== item.path) {
-            this.props.history.push(item.path);
+        if (this.history.location.pathname !== item.path) {
+            this.history.push(item.path);
         }
     }
 
@@ -88,7 +87,7 @@ class Layout extends React.Component {
         return menuList.map((item, index) => {
             return (
                 <MenuItem 
-                    selected={this.props.location.pathname == item.path} 
+                    selected={this.history.location.pathname == item.path} 
                     onClick={() => {this.handleListClick(item)}} 
                     key={index}
                     button
@@ -105,7 +104,6 @@ class Layout extends React.Component {
     render() {
         const { children, classes } = this.props;
         const list = this.renderList();
-
         return (
             <div className="layout">
             <AppBar position="absolute" className={classes.appBar}>
@@ -113,7 +111,6 @@ class Layout extends React.Component {
                     <Typography type="title" color="inherit">
                         BLOG / <span className="layout-head-text">博文管理</span>
                     </Typography>
-                    {/*<Button color="contrast">Login</Button>*/}
                 </Toolbar>
              </AppBar>
              <Drawer

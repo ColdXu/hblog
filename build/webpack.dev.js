@@ -6,12 +6,11 @@ const merge = require('webpack-merge');
 const config = require('./config');
 
 
+// console.log(config.getClientEntry({middleware: 'webpack-hot-middleware/client'}))
 module.exports = merge(webpackCommon, {
+    mode: 'development',
     devtool: 'inline-source-map',
-    devServer: {
-        contentBase: config.OUTPUT_PATH,
-        hot: true
-    },
+    entry: config.getClientEntry(['webpack-hot-middleware/client']),
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.DefinePlugin({

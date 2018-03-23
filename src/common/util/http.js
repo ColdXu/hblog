@@ -5,7 +5,7 @@ import message from '../component/message'
 
 var instance = axios.create({
   baseURL: config.API_BASE,
-  timeout: 3000,
+  timeout: 30000,
   withCredentials: true,
   headers: {
         'Content-Type': 'application/json'

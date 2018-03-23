@@ -5,17 +5,15 @@ import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import Drawer from 'material-ui/Drawer';
 import MenuIcon from 'material-ui-icons/Menu';
-
 import { MenuList, MenuItem } from 'material-ui/Menu';
-
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import HomeIcon from 'material-ui-icons/Home';
 import AddIcon from 'material-ui-icons/Add';
 import NoteIcon from 'material-ui-icons/Note';
 import { withStyles } from 'material-ui/styles'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-
+import { Link } from 'react-router-dom'
+import Base from '../../../common/component/base';
 import './index.less';
 
 const drawerWidth = 220;
@@ -53,51 +51,40 @@ const styles = theme => ({
         icon: HomeIcon,
       },
       {
-        title: '写作',
-        key: 'create',
-        path: '/article/create',
+        title: '分类',
+        key: 'classify',
+        path: '/classify',
         icon: AddIcon,
       },
       {
-        title: '博文列表',
-        key: 'list',
-        path: '/article',
+        title: 'ME',
+        key: 'me',
+        path: '/me',
         icon: NoteIcon,
       },
   ]
 
-  @withRouter
   @connect(
       state => ({
           user: state.user
       })
   )
-class Layout extends React.Component {
+class Layout extends Base {
     constructor(props) {
         super(props)
     }
 
 
     handleListClick = (item) => {
-        if (this.props.location.pathname !== item.path) {
-            this.props.history.push(item.path);
+        if (this.history.location.pathname !== item.path) {
+            this.history.push(item.path);
         }
     }
 
     renderList = () => {
         return menuList.map((item, index) => {
             return (
-                <MenuItem 
-                    selected={this.props.location.pathname == item.path} 
-                    onClick={() => {this.handleListClick(item)}} 
-                    key={index}
-                    button
-                >
-                    <ListItemIcon>
-                        <item.icon />
-                    </ListItemIcon>
-                    <ListItemText primary={<span><span className="layout-head-title">{item.title}</span><span className="layout-head-text"> / {item.key}</span></span>} />
-                </MenuItem>
+                <Link key={item.key} to={item.path}>{item.title}</Link>
             )
         })
     }
@@ -110,7 +97,9 @@ class Layout extends React.Component {
             <div className="layout">
             <div className="layout-header">
                 <div className="layout-header-container">
-                    <div className="layout-title">blog博客</div>
+                    <div className="layout-nav">
+                        {list}
+                    </div>
                 </div>
             </div>
             <main

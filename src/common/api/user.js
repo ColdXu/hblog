@@ -18,3 +18,11 @@ export function getUserInfo() {
         disabledMessage: true
     })
 }
+
+// 获取站点信息
+export function getSizeInfo({username}) {
+    return http.get(`user/sizeInfo/${username}`, {
+        disabledMessage: true
+    })
+}
+

@@ -1,4 +1,5 @@
 import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom';
+import reactDom from 'react-router-redux';
 import App from '../component/app';
 import Layout from '../component/layout';
 import Auth from '../component/auth';
@@ -8,8 +9,9 @@ import Article from '../page/article';
 
 const router = [
     {
-        path: '/home',
+        path: '/',
         title: '首页',
+        exact: true,
         component: Home,
     },
     {

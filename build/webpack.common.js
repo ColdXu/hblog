@@ -8,7 +8,6 @@ const config = require('./config');
 
 module.exports = {
     context: config.ENTRY_PATH,
-    entry: config.CLIENT_ENTRY,
     output: {
         path: config.OUTPUT_PATH,
         filename: '[name].[hash:6].bundle.js',
@@ -73,9 +72,30 @@ module.exports = {
         //     allChunks: true
         // }),
 
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'common'
-        }),
+        // new webpack.optimize.CommonsChunkPlugin({
+        //     name: 'common'
+        // }),
+
+        // new webpack.optimize.SplitChunksPlugin({
+        //     chunks: 'all',
+        //     minSize: 30000,
+        //     minChunks: 1,
+        //     maxAsyncRequests: 5,
+        //     maxInitialRequests: 3,
+        //     name: true,
+        //     cacheGroups: {
+        //         default: {
+        //             minChunks: 2,
+        //             priority: -20,
+        //             reuseExistingChunk: true,
+        //         },
+        //         vendors: {
+        //             test: /[\\/]node_modules[\\/]/,
+        //             priority: -10
+        //         }
+        //     }
+        // }),
+
 
         new HtmlWebpackPlugin({
             title: '主页',
