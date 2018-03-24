@@ -6,7 +6,6 @@ import { getUserInfo } from '../../../common/api/user'
 import Base from '../../../common/component/base';
 import './index.less';
 import * as asdf from 'react-router'
-console.log(asdf);
 const theme = createMuiTheme({
     palette: {
         primary: blue
@@ -20,6 +19,7 @@ const theme = createMuiTheme({
 export default class extends Base {
     constructor(props) {
         super(props)
+        console.log(this.props)
         this.props.dispatch({type: 'user/getUserInfo'})
     }
 

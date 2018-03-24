@@ -15,7 +15,6 @@ export default class extends Base {
         history.push('login')
     }
     render() {
-        console.log('this', this)
         return (<div>
                 <div onClick={this.handleClick}>hkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkkohkko</div>
             </div>)
