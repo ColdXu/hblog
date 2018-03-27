@@ -69,7 +69,7 @@ const styles = theme => ({
 
   @connect(
       state => ({
-          user: state.user
+          user: state.user,
       })
   )
 class Layout extends Base {

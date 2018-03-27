@@ -13,9 +13,8 @@ export default class extends Base {
 
     constructor(props) {
         super(props);
-        console.log(this)
-        if (this.history.location.params.id) {
-            this.props.dispatch({type: 'article/getAdminArticle', payload: {id: this.history.location.params.id}})
+        if (this.props.match.params.id) {
+            this.props.dispatch({type: 'article/getAdminArticle', payload: {id: this.props.match.params.id}})
         }
 
         this.state = {

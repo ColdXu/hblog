@@ -13,13 +13,14 @@ const theme = createMuiTheme({
 });
 @connect(
     state => ({
-        user: state.user
+        user: state.user,
+        state: state
     })
 )
 export default class extends Base {
     constructor(props) {
         super(props)
-        console.log(this.props)
+        console.log(this)
         this.props.dispatch({type: 'user/getUserInfo'})
     }
 

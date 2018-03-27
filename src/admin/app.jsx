@@ -4,6 +4,8 @@ import router from './router';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 import { reducer, actions } from './store';
 import promiseMiddleware from '../common/util/promiseMiddleware';
 import '../common/asset/index.css';
@@ -18,7 +20,6 @@ const store = createStore(reducer, applyMiddleware(
 ))
 // console.log(actions)
 sagaMiddleware.run(actions)
-
 
 const app = (
     <Provider store={store}>

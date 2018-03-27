@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { takeLatest } from 'redux-saga';
-import {ConnectedRouter, routerReducer, routerMiddleware, push} from 'react-router-redux'
+import { routerReducer } from 'react-router-redux'
 const context = require.context('./', true, /\.js$/);
 const keys = context.keys().filter(item => item !== './index.js');
 
@@ -24,7 +24,7 @@ const rootRun = function* () {
     }
 }
 
-memo.router = routerReducer;
+memo.reduce.router = routerReducer;
 
 // 合并reduce
 export const reducer = combineReducers(memo.reduce)

@@ -80,10 +80,10 @@ const renderRouter = () => {
 
 export default function () {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <App>
                 {renderRouter()}
             </App>
-        </HashRouter>
+        </BrowserRouter>
     )
 }
