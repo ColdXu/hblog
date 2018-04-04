@@ -3,7 +3,6 @@ import App from '../component/app';
 import Layout from '../component/layout';
 import home from '../page/home';
 import article from '../page/article';
-
 const router = [
     {
         path: '/',
@@ -15,7 +14,7 @@ const router = [
         path: '/article/:id',
         title: '文章详情',
         component: article.Detail,
-    }
+    },
 ];
 
 /**
@@ -37,7 +36,7 @@ const renderRouter = () => {
     })
     return (
         <Switch>
-            <Layout>{list}</Layout>
+            {list}
         </Switch>
     )
 }

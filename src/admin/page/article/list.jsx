@@ -10,8 +10,6 @@ import List from './component/list';
 export default class extends React.Component {
     constructor(props) {
         super(props)
-        console.log(this);
-        
         this.props.dispatch({type: 'article/getAdminArticleList'})
     }
 
@@ -27,6 +25,7 @@ export default class extends React.Component {
     }
 
     render() {
+        console.log('article')
         const { article } = this.props;
         return (
             <div>

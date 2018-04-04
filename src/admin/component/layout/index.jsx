@@ -8,6 +8,7 @@ import MenuIcon from 'material-ui-icons/Menu';
 
 import { MenuList, MenuItem } from 'material-ui/Menu';
 import history from '../../../common/util/history'
+import { withRouter } from 'react-router-dom';
 
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import HomeIcon from 'material-ui-icons/Home';
@@ -66,10 +67,10 @@ const styles = theme => ({
         icon: NoteIcon,
       },
   ]
-
+  @withRouter
   @connect(
       state => ({
-          user: state.user,
+          user: state.user
       })
   )
 class Layout extends Base {
@@ -124,10 +125,6 @@ class Layout extends Base {
                     {list}
                 </MenuList>
             </Drawer>
-            <main
-                className="layout-container">
-                {this.props.children}
-            </main>
             </div>
         )
     }

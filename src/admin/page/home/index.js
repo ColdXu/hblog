@@ -11,8 +11,13 @@ import './index.less';
 )
 export default class extends Base {
 
+    constructor(props) {
+        super(props)
+        console.log(this)
+    }
+
     handleClick = () => {
-        history.push('login')
+        // history.push('login')
     }
     render() {
         return (<div>

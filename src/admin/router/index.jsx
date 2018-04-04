@@ -1,89 +1,35 @@
-import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import UnauthorizedLayout from './unauthorized-layout';
+import AuthorizedLayout from './authorized-layout';
+import AuthorizedRoute from './authorized-route'
+
 import reactDom from 'react-router-redux';
 import App from '../component/app';
 import Layout from '../component/layout';
-import Auth from '../component/auth';
 import Home from '../page/home';
 import Sso from '../page/sso';
 import Article from '../page/article';
-
-const router = [
-    {
-        path: '/',
-        title: '首页',
-        exact: true,
-        component: Home,
-    },
-    {
-        path: '/login',
-        title: '登录',
-        component: Sso.Login,
-        layout: false,
-        auth: false,
-    },
-    {
-        path: '/article',
-        exact: true,
-        title: '博文列表',
-        component: Article.List,
-    },
-    {
-        path: '/article/create/:id',
-        title: '创建',
-        component: Article.Create,
-    },
-    {
-        path: '/article/create',
-        title: '创建',
-        exact: true,
-        component: Article.Create,
-    },
-];
-
-
 /**
  * 渲染route路由
  */
 const renderRouter = () => {
-    let layoutList = [];
-    let notLayoutList = [];
-
-    router.forEach(({
-        path,
-        title,
-        component,
-        layout = true,
-        auth = true,
-        ...resData,
-    }, key) => {
-        let route = <Route key={path} path={path} component={component} title={title} {...resData}/>
-
-        if (auth) {
-            route = <Auth key={path}>{route}</Auth>
-        }
-
-        // 是否包装布局(header && sidear)
-        if (layout) {
-            layoutList.push(route);
-        } else {
-            notLayoutList.push(route);
-        }
-    })
-
     return (
         <Switch>
-            {notLayoutList}
-            <Layout>{layoutList}</Layout>
+            <Route path="/auth" component={UnauthorizedLayout}/>
+            <Layout/>
+            <AuthorizedRoute path="/" exact component={Home}/>
+            <AuthorizedRoute path="/article" component={Article}/>
+            <Redirect to="/" />
         </Switch>
     )
 }
 
 export default function () {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <App>
                 {renderRouter()}
             </App>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
