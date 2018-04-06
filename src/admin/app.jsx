@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux'   
 import { reducer, actions } from './store';
-import promiseMiddleware from '../common/util/promiseMiddleware';
 import '../common/asset/index.css';
 
 const sagaMiddleware = createSagaMiddleware()

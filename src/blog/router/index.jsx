@@ -36,7 +36,9 @@ const renderRouter = () => {
     })
     return (
         <Switch>
-            {list}
+            <Layout>
+                {list}
+            </Layout>
         </Switch>
     )
 }

@@ -4,14 +4,14 @@ const initState = {
         list: []
     },
     data: {
+        id: '',
         title: '',
         content: '',
         tag: '',
-        cover: '',
+        coverId: '',
     },
 }
-function reducer(state = initState, { payload, type }) {
-    
+function reducer(state = initState, { payload = {}, type }) {
     switch (type) {
         // 获取文章列表
         case 'article/getAdminArticleList/success':
@@ -30,6 +30,16 @@ function reducer(state = initState, { payload, type }) {
             })
             return {...state}
 
+        // 获取文章详情
+        case 'article/setArticle':
+            return {...state, data: {
+                id: '',
+                title: '',
+                content: '',
+                tag: '',
+                coverId: '',
+            }
+        }
             
     }
     

@@ -51,10 +51,10 @@ export default class extends React.Component {
             return (
               <TableRow key={n.id}>
                 <TableCell>{n.title}</TableCell>
-                <TableCell>{moment(n.createDate).format('YYYY-MM-DD h:mm:ss')}</TableCell>
-                <TableCell>{moment(n.publishDate).format('YYYY-MM-DD h:mm:ss')}</TableCell>
-                <TableCell>{moment(n.lastPublishDate).format('YYYY-MM-DD h:mm:ss')}</TableCell>
-                <TableCell>{moment(n.modifyDate).format('YYYY-MM-DD h:mm:ss')}</TableCell>
+                <TableCell>{moment(n.createDate).format('MM-DD h:mm')}</TableCell>
+                <TableCell>{moment(n.publishDate).format('MM-DD h:mm')}</TableCell>
+                <TableCell>{moment(n.lastPublishDate).format('MM-DD h:mm')}</TableCell>
+                <TableCell>{moment(n.modifyDate).format('MM-DD h:mm')}</TableCell>
                 <TableCell>{n.pv}</TableCell>
                 <TableCell>
                   <a href="javascript:;" onClick={() => onEdit(n.id)}>编辑</a>

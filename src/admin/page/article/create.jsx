@@ -13,37 +13,37 @@ export default class extends Base {
 
     constructor(props) {
         super(props);
+        this.props.dispatch({type: 'article/clearArticle'})
         if (this.props.match.params.id) {
             this.props.dispatch({type: 'article/getAdminArticle', payload: {id: this.props.match.params.id}})
         }
-
         this.state = {
             formData: this.props.article.data
         }
+        this.props.dispatch({type: 'article/clearArticle'})
     }
 
     componentWillReceiveProps(nextProps) {
-        if (!this.state.formData.title && !this.state.formData.content && !_.isEmpty(nextProps.article.data)) {
-            this.setState({
-                formData: {
-                    ...nextProps.article.data,
-                }
-            })
-        }
+        this.setState({
+            formData: {
+                ...nextProps.article.data,
+            }
+        })
     }
 
     handleSave = (type) => {
-        const { title, content } = this.state.formData;
+        const { title, content, coverId } = this.state.formData;
 
         const data = {
             title,
             content,
+            coverId,
         }
         data.status = type === 'release' ? 'publish' : 'edit';
 
-        if (this.history.location.params.id) {
+        if (this.props.match.params.id) {
             this.props.dispatch({type: 'article/putAdminArticle', payload: {
-                id: this.history.location.params.id,
+                id: this.props.match.params.id,
                 ...data
             }})
         } else {

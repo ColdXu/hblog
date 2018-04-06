@@ -25,11 +25,13 @@ export function createAdminArticle({
     title,
     content,
     status,
+    coverId,
 }) {
     return http.post('admin/article', {
         title,
         content,
         status,
+        coverId,
     })
 }
 
@@ -39,11 +41,13 @@ export function putAdminArticle({
     title,
     content,
     status,
+    coverId,
 }) {
     return http.put(`admin/article/${id}`, {
         title,
         content,
-        status
+        status,
+        coverId,
     })
 }
 

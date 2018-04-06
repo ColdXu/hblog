@@ -5,11 +5,9 @@ import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import Drawer from 'material-ui/Drawer';
 import MenuIcon from 'material-ui-icons/Menu';
-
 import { MenuList, MenuItem } from 'material-ui/Menu';
 import history from '../../../common/util/history'
 import { withRouter } from 'react-router-dom';
-
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import HomeIcon from 'material-ui-icons/Home';
 import AddIcon from 'material-ui-icons/Add';
@@ -67,7 +65,6 @@ const styles = theme => ({
         icon: NoteIcon,
       },
   ]
-  @withRouter
   @connect(
       state => ({
           user: state.user

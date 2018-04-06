@@ -10,12 +10,10 @@ import Save from 'material-ui-icons/Save';
 import Send from 'material-ui-icons/Send';
 import { withStyles } from 'material-ui/styles';
 import * as apiMedia from '../../../../../common/api/media';
+import { getMedia } from '../../../../../common/util/media';
 import classnames from 'classnames';
 import './index.less';
 import { MenuItem } from 'material-ui/Menu';
-
-// console.log(FileUpload);
-
 
 
 const styles = theme => ({
@@ -81,32 +79,13 @@ export default class extends React.Component {
 
     handleFileChange = (event) => {
         const { files } = event.target
-        const formData = new FormData();
-        // formData.append('file', files[0]);
-        var content = '<a id="a"><b id="b">hey!</b></a>';
-        var blob = new Blob([content], { type: "text/xml"});
-        formData.append("webmasterfile", blob);
-        formData.append('user', 'coldxu')
-        apiMedia.uploadMedia({file: formData})
-    }
+        const formData = new FormData()
+        formData.append('file', files[0])
+        apiMedia.uploadMedia(formData).then(({data})=> {
+            this.handleChange('coverId', data.id)
 
-    /**
-      * 获取本地图片base64格式
-      * @params {Array} [files] 原生上传文件change event.target.files
-      * @return { String } 图片的base64字符串
-      */
-     gotPic = (files) => {
-        return new Promise((resolve, reject) => {
-          if (files.length === 1 && files[0].type.indexOf('image/') === 0) {
-            let reader = new FileReader()
-            reader.onload = function (e) {
-              resolve(e.target.result)
-            }
-            reader.readAsDataURL(files[0])
-          }
         })
-      }
-
+    }
 
     render() {
         const { classes, onChange, data } = this.props;
@@ -162,11 +141,15 @@ export default class extends React.Component {
                     </TextField>
                 </div>
                 <div className="article-createform-upload">
-                    <img src={data.cover}/>
-                    <FileUploadIcon
-                        className={classes.fileUploadIcon}
-                    ></FileUploadIcon>
-                    <Input type="file" onChange={this.handleFileChange}></Input>
+                    {data.coverId && 
+                        <img src={getMedia(data.coverId)}/>
+                    }
+                    {!data.coverId &&
+                        <FileUploadIcon
+                            className={classes.fileUploadIcon}
+                        ></FileUploadIcon>
+                    }
+                        <Input type="file" name="dom" onChange={this.handleFileChange}></Input>
                 </div>
                 <ReactQuill 
                     theme="snow"

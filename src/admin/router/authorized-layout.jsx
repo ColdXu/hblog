@@ -1,21 +1,23 @@
-import { MuiThemeProvider, createPalette, createMuiTheme } from 'material-ui/styles';
-import { connect } from 'react-redux';
-import { withRouter, Route, Redirect } from 'react-router-dom';
-import { blue } from 'material-ui/colors';
+/**
+ * 授权模块路由
+ * @author zhiyong.xu <zhiyong.xui@wenba100.com>
+ * @since 2018-04-05 14:49:25
+ */
+import { withRouter, Route, Redirect, Switch } from 'react-router-dom';
+import AuthorizedRoute from './authorized-route'
+import Article from '../page/article';
+import Home from '../page/home';
 import Layout from '../component/layout';
 
 
-import Home from '../page/home';
-import Sso from '../page/sso';
-import Article from '../page/article';
-
-
-export default function({ match }) {
+export default function(props) {
     return (
-        <Layout>
-            <Route path={`${match.path}article/create/:id`} component={Article.Create}/>
-            <Route path={`${match.path}article/create`} exact component={Article.Create}/>
-            <Route path={`${match.path}article`} component={Article.List}/>
-        </Layout>
+        <div>
+            <Layout {...props}/>
+            <Switch>
+                <Route path="/" exact component={Home}/>
+                <Route path="/article" component={Article}/>
+            </Switch>
+        </div>
     )
 }

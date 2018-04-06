@@ -48,21 +48,29 @@ export default {
 
         //  修改博文状态
        *putAdminArticleStatus({payload}) {
-        try {
-            const data = yield call(apiArticle.putAdminArticleStatus, payload);
-            if (payload.status === 'publish') {
-                message.success('下架成功')
-            } else {
-                message.success('撤回成功')
-            }
-            yield put({
-                type: 'article/putAdminArticleStatus/success',
-                payload: {
-                    id: payload.id,
+            try {
+                const data = yield call(apiArticle.putAdminArticleStatus, payload);
+                if (payload.status === 'publish') {
+                    message.success('发布成功')
+                } else {
+                    message.success('撤回成功')
                 }
+                yield put({
+                    type: 'article/putAdminArticleStatus/success',
+                    payload: {
+                        id: payload.id,
+                    }
+                })
+                
+            } catch(e) {}
+        },
+
+         //清空编辑文件内容
+       *clearArticle() {
+            yield put({
+                type: 'article/setArticle',
+                payload: {}
             })
-            
-        } catch(e) {}
-    },
+        },
     }
 }

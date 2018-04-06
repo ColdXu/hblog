@@ -5,7 +5,6 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import { reducer, actions } from './store';
-import promiseMiddleware from '../common/util/promiseMiddleware';
 import '../common/asset/index.css';
 
 const sagaMiddleware = createSagaMiddleware()

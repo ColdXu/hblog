@@ -13,7 +13,7 @@ var instance = axios.create({
 });
 
 instance.interceptors.request.use(function(config) {
-    config.data = JSON.stringify(config.data);
+    // config.data = JSON.stringify(config.data);
     return config;
 }, function(error) {
     return Promise.reject(error)
