@@ -12,15 +12,10 @@ const theme = createMuiTheme({
         primary: blue
     },
 });
-@connect(
-    state => ({
-        user: state.user
-    })
-)
 export default class extends Base {
     constructor(props) {
         super(props)
-        this.props.dispatch({type: 'user/getSizeInfo', payload: {username: 'cold'}})
+        // this.props.dispatch({type: 'user/getSizeInfo', payload: {username: 'cold'}})
     }
 
     render() {

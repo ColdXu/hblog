@@ -26,12 +26,14 @@ export function createAdminArticle({
     content,
     status,
     coverId,
+    tagId,
 }) {
     return http.post('admin/article', {
         title,
         content,
         status,
         coverId,
+        tagId,
     })
 }
 
@@ -42,12 +44,14 @@ export function putAdminArticle({
     content,
     status,
     coverId,
+    tagId,
 }) {
     return http.put(`admin/article/${id}`, {
         title,
         content,
         status,
         coverId,
+        tagId,
     })
 }
 

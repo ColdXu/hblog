@@ -4,6 +4,7 @@ import moment from 'moment';
 import Content from '../../component/content';
 import Base from '../../../common/component/base';
 import history from '../../../common/util/history'
+import { getMedia } from '../../../common/util/media'
 // import List from './component/list'
 import './detail.less';
 
@@ -16,7 +17,7 @@ import './detail.less';
 export default class extends Base {
     constructor(props) {
         super(props)
-        this.props.dispatch({type: 'article/getArticle', payload: {id: this.history.location.params.id}})
+        this.props.dispatch({type: 'article/getArticle', payload: {id: this.props.match.params.id}})
     }
 
     render() {
@@ -24,6 +25,9 @@ export default class extends Base {
         return (
             <div className="p-article-detail">
                 <div className="p-article-detail-box">
+                    {article.coverId &&
+                        <img src={getMedia(article.coverId)} className="p-article-cover"/ >
+                    }
                     <h1 className="p-article-detail-title">
                         {article.title}
                     </h1>

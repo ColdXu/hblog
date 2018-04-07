@@ -5,7 +5,8 @@ import CreateForm from './component/create-form';
 
 @connect(
     state => ({
-        article: state.article
+        article: state.article,
+        user: state.user,
     }),
 )
 
@@ -13,31 +14,29 @@ export default class extends Base {
 
     constructor(props) {
         super(props);
-        this.props.dispatch({type: 'article/clearArticle'})
+        
         if (this.props.match.params.id) {
             this.props.dispatch({type: 'article/getAdminArticle', payload: {id: this.props.match.params.id}})
+        } else {
+            this.props.dispatch({type: 'article/clearArticle'})
         }
-        this.state = {
-            formData: this.props.article.data
-        }
-        this.props.dispatch({type: 'article/clearArticle'})
+
+        this.state = {formData: {...this.props.article.data}};
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            formData: {
-                ...nextProps.article.data,
-            }
-        })
+        if (!_.isEqual(this.props.article.data, nextProps.article.data)) {
+            this.setState({
+                formData: {
+                    ...nextProps.article.data,
+                }
+            }) 
+        }
     }
 
     handleSave = (type) => {
-        const { title, content, coverId } = this.state.formData;
-
         const data = {
-            title,
-            content,
-            coverId,
+            ...this.state.formData
         }
         data.status = type === 'release' ? 'publish' : 'edit';
 
@@ -61,8 +60,10 @@ export default class extends Base {
     }
 
     render() {
+        console.log(this.state.formData)
         return (
             <CreateForm
+                tagsOptions={this.props.user.info.tags}
                 onChange={this.handleChange}
                 data={this.state.formData}
                 onRelease={() => this.handleSave('release')}

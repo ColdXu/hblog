@@ -50,14 +50,6 @@ const styles = theme => ({
     }
   });
 
-  const tags = [
-    'JavaScript',
-    'Nodejs',
-    '前端',
-    '后端',
-    '游戏'
-  ];
-
   @withStyles(styles)
 export default class extends React.Component {
 
@@ -88,8 +80,8 @@ export default class extends React.Component {
     }
 
     render() {
-        const { classes, onChange, data } = this.props;
-       
+        const { classes, onChange, data, tagsOptions } = this.props;
+
         return (
             <div className="article-createform">
                 <div className="article-createform-btns">
@@ -129,13 +121,13 @@ export default class extends React.Component {
                         select
                         label="标签"
                         className={classes.textfield2}
-                        value={data.tag || tags[0]}
-                        onChange={(e) => this.handleChange('tag', e.target.value)}
+                        value={data.tagId || ''}
+                        onChange={(e) => this.handleChange('tagId', e.target.value)}
                         margin="normal"
                         >
-                        {tags.map(value => (
-                            <MenuItem key={value} value={value}>
-                            {value}
+                        {tagsOptions.map(item => (
+                            <MenuItem key={item.id} value={item.id}>
+                                {item.name}
                             </MenuItem>
                         ))}
                     </TextField>
@@ -149,7 +141,7 @@ export default class extends React.Component {
                             className={classes.fileUploadIcon}
                         ></FileUploadIcon>
                     }
-                        <Input type="file" name="dom" onChange={this.handleFileChange}></Input>
+                    <Input type="file" className="article-createform-input" onChange={this.handleFileChange}></Input>
                 </div>
                 <ReactQuill 
                     theme="snow"

@@ -12,7 +12,7 @@ import AddIcon from 'material-ui-icons/Add';
 import NoteIcon from 'material-ui-icons/Note';
 import { withStyles } from 'material-ui/styles'
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import Base from '../../../common/component/base';
 import './index.less';
 
@@ -64,21 +64,15 @@ const styles = theme => ({
       },
   ]
 
-  @connect(
-      state => ({
-          user: state.user
-      })
-  )
+  @withRouter
+@connect(
+    state => ({
+        user: state.user
+    })
+)
 class Layout extends Base {
     constructor(props) {
         super(props)
-    }
-
-
-    handleListClick = (item) => {
-        if (this.history.location.pathname !== item.path) {
-            this.history.push(item.path);
-        }
     }
 
     renderList = () => {
@@ -92,7 +86,6 @@ class Layout extends Base {
     render() {
         const { children, classes } = this.props;
         const list = this.renderList();
-
         return (
             <div className="layout">
             <div className="layout-header">
