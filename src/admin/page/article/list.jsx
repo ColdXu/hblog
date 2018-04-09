@@ -26,7 +26,7 @@ export default class extends React.Component {
 
     render() {
         const { article } = this.props;
-        console.log('nihao')
+        console.log(this.props)
         return (
             <div>
                 <List

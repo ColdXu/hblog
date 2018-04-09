@@ -60,7 +60,7 @@ export default class extends Base {
     }
 
     render() {
-        console.log(this.state.formData)
+        console.log(this.props)
         return (
             <CreateForm
                 tagsOptions={this.props.user.info.tags}

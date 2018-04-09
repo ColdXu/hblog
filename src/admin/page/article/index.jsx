@@ -3,6 +3,7 @@ import Create from './create';
 import List from './list';
 
 export default function({ match }) {
+    console.log('match', match)
     return (
         <div className="layout-primary">
             <Switch>

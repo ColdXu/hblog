@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { takeLatest } from 'redux-saga';
+import { takeLatest } from 'redux-saga/effects';
 const context = require.context('./', true, /\.js$/);
 const keys = context.keys().filter(item => item !== './index.js');
 
