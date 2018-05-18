@@ -1,20 +1,35 @@
 import { Grid, Typography, Button, TextField } from 'material-ui'
 import { connect } from 'react-redux'
+import { withStyles } from 'material-ui/styles';
+import Save from 'material-ui-icons/Save';
+import Tooltip from 'material-ui/Tooltip';
+import IconButton from 'material-ui/IconButton';
 import Base from '../../../common/component/base';
 import CreateForm from './component/create-form';
-
+const styles = theme => ({
+    icon: {
+      color: '#fff',
+    },
+  });
 @connect(
     state => ({
         article: state.article,
         user: state.user,
     }),
 )
-
+@withStyles(styles)
 export default class extends Base {
-
     constructor(props) {
         super(props);
-        
+        this.props.dispatch({type: 'common/setHeader', payload: {
+            right: (
+                <Tooltip id="tooltip-icon" title=" 保存">
+                    <IconButton aria-label=" 保存">
+                        <Save onClick={() => this.handleSave('save')} className={this.props.classes.icon}/>
+                    </IconButton>
+                </Tooltip>
+            )
+        }})
         if (this.props.match.params.id) {
             this.props.dispatch({type: 'article/getAdminArticle', payload: {id: this.props.match.params.id}})
         } else {
@@ -22,6 +37,12 @@ export default class extends Base {
         }
 
         this.state = {formData: {...this.props.article.data}};
+    }
+
+    componentWillUnmount() {
+        this.props.dispatch({type: 'common/setHeader', payload: {
+            right: null
+        }})
     }
 
     componentWillReceiveProps(nextProps) {
@@ -66,8 +87,7 @@ export default class extends Base {
                 tagsOptions={this.props.user.info.tags}
                 onChange={this.handleChange}
                 data={this.state.formData}
-                onRelease={() => this.handleSave('release')}
-                onSave={() => this.handleSave('save')}/>
+                />
         )
     }
 }

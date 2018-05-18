@@ -4,7 +4,7 @@ let API_BASE = '';
 
 switch(env) {
     case 'prd':
-        API_BASE = 'http://182.254.231.120:8000/api/';
+        API_BASE = '//api.coldxu.com/api/';
         break;
     default: 
         API_BASE = 'http://localhost:8000/api/';

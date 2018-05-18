@@ -1,12 +1,9 @@
 import * as apiArticle from '../../../common/api/article';
 import { call, put, take } from 'redux-saga/effects'
-import { takeEvery } from 'redux-saga'
 import history from '../../../common/util/history';
 import message from '../../../common/component/message';
 
 export default {
-    name: 'article',
-    effects: {
         //  获取列表
         *getAdminArticle({payload}) {
             try {
@@ -72,5 +69,4 @@ export default {
                 payload: {}
             })
         },
-    }
 }

@@ -6,7 +6,6 @@ import Delete from 'material-ui-icons/Delete';
 import FileUploadIcon from 'material-ui-icons/FileUpload';
 import KeyboardVoice from 'material-ui-icons/KeyboardVoice';
 import Icon from 'material-ui/Icon';
-import Save from 'material-ui-icons/Save';
 import Send from 'material-ui-icons/Send';
 import { withStyles } from 'material-ui/styles';
 import * as apiMedia from '../../../../../common/api/media';
@@ -40,12 +39,8 @@ const styles = theme => ({
         width: 250,
     },
     fileUploadIcon: {
-        position: 'absolute',
-        top: '30%',
-        left: '50%',
-        marginLeft: -50,
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         color: '#868686'
     }
   });
@@ -84,28 +79,6 @@ export default class extends React.Component {
 
         return (
             <div className="article-createform">
-                <div className="article-createform-btns">
-                <Button
-                    onClick={this.handleSave}
-                    className={classes.rightButtonIcon}
-                    raised={'true'}
-                    color="primary"
-                    variant="raised"
-                    size="small">
-                    保存
-                    <Save className={classnames(classes.iconSmall, classes.rightIcon)} />
-                </Button>
-                <Button
-                    onClick={this.handleRelease}
-                    className={classes.releaseButton}
-                    raised={'true'}
-                    color="primary"
-                    variant="raised"
-                    size="small">
-                    发布
-                    <Send className={classnames(classes.iconSmall, classes.rightIcon)}/>
-                </Button>
-                </div>
                 <div className="article-createform-header">
                     <TextField
                         onChange={(e) => this.handleChange('title', e.target.value)}
@@ -137,9 +110,14 @@ export default class extends React.Component {
                         <img src={getMedia(data.coverId)}/>
                     }
                     {!data.coverId &&
-                        <FileUploadIcon
+                        <div className="article-createform-icon">
+                            <div>
+                            <FileUploadIcon
                             className={classes.fileUploadIcon}
                         ></FileUploadIcon>
+                            </div>
+                            <div className="article-createform-icon-text">请上传690px * 290px的封面图</div>
+                        </div>
                     }
                     <Input type="file" className="article-createform-input" onChange={this.handleFileChange}></Input>
                 </div>

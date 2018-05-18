@@ -43,6 +43,9 @@ const styles = theme => ({
       minWidth: 0, // So the Typography noWrap works
     },
     toolbar: theme.mixins.toolbar,
+    headbar: {
+        justifyContent: 'space-between'
+    }
   });
 
   const menuList = [
@@ -67,7 +70,8 @@ const styles = theme => ({
   ]
   @connect(
       state => ({
-          user: state.user
+          user: state.user,
+          common: state.common
       })
   )
 class Layout extends Base {
@@ -100,15 +104,18 @@ class Layout extends Base {
     }
 
     render() {
-        const { children, classes } = this.props;
+        const { children, classes, common } = this.props;
         const list = this.renderList();
         return (
             <div className="layout">
             <AppBar position="absolute" className={classes.appBar}>
-                <Toolbar>
+                <Toolbar
+                    className={classes.headbar}
+                >
                     <Typography type="title" color="inherit">
                         BLOG / <span className="layout-head-text">博文管理</span>
                     </Typography>
+                    <div>{common.layout.right}</div>
                 </Toolbar>
              </AppBar>
              <Drawer

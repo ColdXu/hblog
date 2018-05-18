@@ -20,15 +20,6 @@ const styles = theme => ({
     return { id, name, calories, fat, carbs, protein };
   }
 
-
-const data = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-  ];
-
   @withStyles(styles)
 export default class extends React.Component {
     render() {
@@ -38,9 +29,9 @@ export default class extends React.Component {
             <TableHead>
             <TableRow>
                 <TableCell>标题</TableCell>
-                <TableCell>创建时间</TableCell>
+                {/*<TableCell>创建时间</TableCell>*/}
                 <TableCell>发布时间</TableCell>
-                <TableCell>最后发布时间</TableCell>
+                {/*<TableCell>最后发布时间</TableCell>*/}
                 <TableCell>修改时间</TableCell>
                 <TableCell>访问量</TableCell>
                 <TableCell>action</TableCell>
@@ -51,9 +42,9 @@ export default class extends React.Component {
             return (
               <TableRow key={n.id}>
                 <TableCell>{n.title}</TableCell>
-                <TableCell>{moment(n.createDate).format('MM-DD h:mm')}</TableCell>
+                {/*<TableCell>{moment(n.createDate).format('MM-DD h:mm')}</TableCell>*/}
                 <TableCell>{moment(n.publishDate).format('MM-DD h:mm')}</TableCell>
-                <TableCell>{moment(n.lastPublishDate).format('MM-DD h:mm')}</TableCell>
+                {/*<TableCell>{moment(n.lastPublishDate).format('MM-DD h:mm')}</TableCell>*/}
                 <TableCell>{moment(n.modifyDate).format('MM-DD h:mm')}</TableCell>
                 <TableCell>{n.pv}</TableCell>
                 <TableCell>

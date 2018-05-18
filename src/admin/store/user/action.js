@@ -1,11 +1,8 @@
 import * as apiUser from '../../../common/api/user';
 import { call, put, take } from 'redux-saga/effects'
-import { takeEvery } from 'redux-saga'
 import history from '../../../common/util/history';
 
 export default {
-    name: 'user',
-    effects: {
         *getUserInfo() {
             try {
                 const data = yield call(apiUser.getUserInfo);
@@ -37,5 +34,4 @@ export default {
                 })
             }
         },
-    }
 }
