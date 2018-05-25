@@ -18,7 +18,7 @@ import Base from '../../../common/component/base';
 
 import './index.less';
 
-const drawerWidth = 220;
+const drawerWidth = 55;
 const styles = theme => ({
     root: {
       flexGrow: 1,
@@ -35,6 +35,7 @@ const styles = theme => ({
       position: 'relative',
       width: drawerWidth,
       backgroundColor: '#fff',
+      border: 'none'
     },
     content: {
       flexGrow: 1,
@@ -97,7 +98,6 @@ class Layout extends Base {
                     <ListItemIcon>
                         <item.icon />
                     </ListItemIcon>
-                    <ListItemText primary={<span><span className="layout-head-title">{item.title}</span><span className="layout-head-text"> / {item.key}</span></span>} />
                 </MenuItem>
             )
         })
@@ -106,29 +106,30 @@ class Layout extends Base {
     render() {
         const { children, classes, common } = this.props;
         const list = this.renderList();
+
         return (
             <div className="layout">
-            <AppBar position="absolute" className={classes.appBar}>
-                <Toolbar
-                    className={classes.headbar}
-                >
-                    <Typography type="title" color="inherit">
-                        BLOG / <span className="layout-head-text">博文管理</span>
-                    </Typography>
-                    <div>{common.layout.right}</div>
-                </Toolbar>
-             </AppBar>
-             <Drawer
-                variant="permanent"
-                classes={{
-                    paper: classes.drawerPaper,
-                  }}
-            >
-            <div className={classes.toolbar} />
-                <MenuList>
-                    {list}
-                </MenuList>
-            </Drawer>
+                <AppBar position="absolute" className={classes.appBar}>
+                    <Toolbar
+                        className={classes.headbar}
+                    >
+                        <Typography type="title" color="inherit">
+                            BLOG / <span className="layout-head-text">博文管理</span>
+                        </Typography>
+                        <div>{common.layout.right}</div>
+                    </Toolbar>
+                </AppBar>
+                <Drawer
+                    variant="permanent"
+                    classes={{
+                        paper: classes.drawerPaper,
+                    }}
+                    >
+                        <div className={classes.toolbar} />
+                        <MenuList>
+                            {list}
+                        </MenuList>
+                </Drawer>
             </div>
         )
     }

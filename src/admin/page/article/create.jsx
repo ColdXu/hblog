@@ -21,15 +21,22 @@ const styles = theme => ({
 export default class extends Base {
     constructor(props) {
         super(props);
-        this.props.dispatch({type: 'common/setHeader', payload: {
-            right: (
-                <Tooltip id="tooltip-icon" title=" 保存">
-                    <IconButton aria-label=" 保存">
-                        <Save onClick={() => this.handleSave('save')} className={this.props.classes.icon}/>
-                    </IconButton>
-                </Tooltip>
-            )
-        }})
+
+        // 设置菜单栏右侧
+        this.props.dispatch(
+            {
+            type: 'common/setHeader', 
+            payload: {
+                right: (
+                    <Tooltip id="tooltip-icon" title=" 保存">
+                        <IconButton aria-label=" 保存">
+                            <Save onClick={() => this.handleSave('save')} className={this.props.classes.icon}/>
+                        </IconButton>
+                    </Tooltip>
+                )
+            }
+        })
+
         if (this.props.match.params.id) {
             this.props.dispatch({type: 'article/getAdminArticle', payload: {id: this.props.match.params.id}})
         } else {
@@ -37,12 +44,6 @@ export default class extends Base {
         }
 
         this.state = {formData: {...this.props.article.data}};
-    }
-
-    componentWillUnmount() {
-        this.props.dispatch({type: 'common/setHeader', payload: {
-            right: null
-        }})
     }
 
     componentWillReceiveProps(nextProps) {
@@ -81,7 +82,6 @@ export default class extends Base {
     }
 
     render() {
-        console.log(this.props)
         return (
             <CreateForm
                 tagsOptions={this.props.user.info.tags}

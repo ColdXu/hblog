@@ -1,7 +1,6 @@
 // import { withStyles } from 'material-ui/styles';
 import { Grid, Typography, Button, TextField, Select, Chip, Input } from 'material-ui';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import MarkdownEdit from '../../../../component/markdown/edit';
 import Delete from 'material-ui-icons/Delete';
 import FileUploadIcon from 'material-ui-icons/FileUpload';
 import KeyboardVoice from 'material-ui-icons/KeyboardVoice';
@@ -12,7 +11,12 @@ import * as apiMedia from '../../../../../common/api/media';
 import { getMedia } from '../../../../../common/util/media';
 import classnames from 'classnames';
 import './index.less';
+
+import 'codemirror/mode/markdown/markdown';
+import 'codemirror/theme/monokai.css';
 import { MenuItem } from 'material-ui/Menu';
+
+console.log(window)
 
 
 const styles = theme => ({
@@ -76,6 +80,11 @@ export default class extends React.Component {
 
     render() {
         const { classes, onChange, data, tagsOptions } = this.props;
+        const options = {
+            mode: "markdown",
+            theme: "monokai"
+        };
+
 
         return (
             <div className="article-createform">
@@ -121,14 +130,20 @@ export default class extends React.Component {
                     }
                     <Input type="file" className="article-createform-input" onChange={this.handleFileChange}></Input>
                 </div>
-                <ReactQuill 
-                    theme="snow"
-                    value={data.content}
-                    onChange={(value) => this.handleChange('content', value)}
-                    />
+                <div style={{marginTop: 40}}>
+                
+                </div>
+                
             </div>
         )
     }
 }
 
 // 
+// <CodeMirror
+
+//                     value={data.content}
+//                     onChange={(value) => this.handleChange('content', value)}
+
+//                     options={options}
+//                 />  

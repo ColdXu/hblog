@@ -5,6 +5,7 @@ const initState = {
     }
 }
 function reducer(state = initState, { payload = {}, type }) {
+    console.log('type', type)
     switch (type) {
         case 'common/setHeader/success':
             return {...state, layout: payload}

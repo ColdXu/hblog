@@ -10,6 +10,13 @@ import List from './component/list';
 export default class extends React.Component {
     constructor(props) {
         super(props)
+        this.props.dispatch(
+            {
+            type: 'common/setHeader', 
+            payload: {
+                right: null
+            }
+        })
         this.props.dispatch({type: 'article/getAdminArticleList'})
     }
 

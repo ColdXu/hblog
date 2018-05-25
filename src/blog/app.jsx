@@ -12,6 +12,7 @@ const sagaMiddleware = createSagaMiddleware()
 const store = createStore(reducer, applyMiddleware(
     sagaMiddleware,
 ))
+
 sagaMiddleware.run(actions)
 const app = (
     <Provider store={store}>

@@ -14,25 +14,25 @@ async function test (haha) {
     state => ({
         user: state.user
     }),
-    (dispatch) => {
-        return { actions: bindActionCreators({test}, dispatch) }
-    }
 )
 export default class extends Base {
 
     constructor(props) {
         super(props)
-        console.log(this)
-    }
 
-    handleClick = () => {
-        // history.push('login')
-        this.props.actions.test(123)
+         this.props.dispatch(
+            {
+            type: 'common/setHeader', 
+            payload: {
+                right: null
+            }
+        })
     }
     render() {
-        console.log(this.props)
         return (<div className="layout-primary" onClick={this.handleClick}>
-                <div >fsafsdfds</div>
+                <div>
+                    cold 欢迎回来
+                </div>
             </div>)
     }
 }
