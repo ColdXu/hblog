@@ -16,9 +16,6 @@ import 'codemirror/mode/markdown/markdown';
 import 'codemirror/theme/monokai.css';
 import { MenuItem } from 'material-ui/Menu';
 
-console.log(window)
-
-
 const styles = theme => ({
     button: {
       margin: theme.spacing.unit,
