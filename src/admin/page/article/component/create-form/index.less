@@ -10,9 +10,11 @@
 .article-createform-upload {
     position: relative;
     margin-top: 10px;
+    box-shadow: 0 0px 5px 0 rgba(140, 144, 155, 0.15);
+    // border: 1px solid #e8eaed;
     width: 100%;
     min-width: 690px;
-    height: 290px;
+    height: 190px;
     background-color:#fff;
     text-align: center;
     cursor: pointer;
@@ -23,40 +25,71 @@
         left: 0;
         top: 0;
         opacity: 0;
-        width: 100%;
-        min-width: 690px;
-        height: 290px;
+        width: inherit;
+        min-width: inherit;
+        height: inherit;
         cursor: pointer;
         
         input {
-            width: 100%;
-            height: 290px;
+            width: inherit;
+            height: inherit;
             cursor: pointer;
         }
     }
 
     .article-createform-icon {
         position: absolute;
-        top: 20%;
+        top: 50%;
         left: 50%;
-        margin-left: -112px;
+        transform: translate(-50%,-50%);
         color: #868686
     }
 
-    // .article-createform-icon-text {
-    //     font-size:
-    // }
+    .article-createform-icon-text {
+        font-size:12px;
+        margin-top: 10px;
+    }
 
     img {
         display: inline-block;
-        max-width: 690px;
-        height: 290px;
+        max-width: inherit;
+        height: inherit;
     }
 }
 
 .article-createform-upload:hover {
     background-color: #eaeaea;
 }
+
+.article-createform-edit {
+    margin-top: 20px;
+    display: flex;
+}
+.article-createform-edit-l {
+    width: 50%;
+    box-shadow: 0 0px 5px 0 rgba(140, 144, 155, 0.15);
+}
+.article-createform-edit-r {
+    padding: 5px;
+    background-color: #fff;
+    width: 50%;
+    word-wrap: break-word;
+    box-shadow: 0 0px 5px 0 rgba(140, 144, 155, 0.15);
+    // border: 1px solid #e8eaed;
+}
+
+.article-createform-edit-l .CodeMirror {
+    padding-top: 10px;
+}
+
+.article-createform-edit, 
+.article-createform-edit-l, 
+.article-createform-edit-r,
+.article-createform-edit-l .CodeMirror{
+    height: 100%;
+}
+
+
 
 
 .ql-toolbar.ql-snow {

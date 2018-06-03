@@ -6,10 +6,6 @@ import Base from '../../../common/component/base'
 import * as userApi from '../../../common/api/user'
 import './index.less';
 
-async function test (haha) {
-    console.log(haha)
-}
-
 @connect(
     state => ({
         user: state.user

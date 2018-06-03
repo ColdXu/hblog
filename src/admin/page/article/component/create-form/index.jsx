@@ -1,6 +1,5 @@
 // import { withStyles } from 'material-ui/styles';
 import { Grid, Typography, Button, TextField, Select, Chip, Input } from 'material-ui';
-import MarkdownEdit from '../../../../component/markdown/edit';
 import Delete from 'material-ui-icons/Delete';
 import FileUploadIcon from 'material-ui-icons/FileUpload';
 import KeyboardVoice from 'material-ui-icons/KeyboardVoice';
@@ -10,10 +9,10 @@ import { withStyles } from 'material-ui/styles';
 import * as apiMedia from '../../../../../common/api/media';
 import { getMedia } from '../../../../../common/util/media';
 import classnames from 'classnames';
+import { Edit, Show } from '../../../../../common/component/markdown';
 import './index.less';
 
-import 'codemirror/mode/markdown/markdown';
-import 'codemirror/theme/monokai.css';
+
 import { MenuItem } from 'material-ui/Menu';
 
 const styles = theme => ({
@@ -35,13 +34,15 @@ const styles = theme => ({
     textfield1: {
         width: '100%',
         marginRight: 15,
+        marginTop: 0,
     },
     textfield2: {
         width: 250,
+        marginTop: 0,
     },
     fileUploadIcon: {
-        width: 120,
-        height: 120,
+        width: 50,
+        height: 50,
         color: '#868686'
     }
   });
@@ -82,7 +83,6 @@ export default class extends React.Component {
             theme: "monokai"
         };
 
-
         return (
             <div className="article-createform">
                 <div className="article-createform-header">
@@ -122,25 +122,32 @@ export default class extends React.Component {
                             className={classes.fileUploadIcon}
                         ></FileUploadIcon>
                             </div>
-                            <div className="article-createform-icon-text">请上传690px * 290px的封面图</div>
                         </div>
                     }
                     <Input type="file" className="article-createform-input" onChange={this.handleFileChange}></Input>
                 </div>
-                <div style={{marginTop: 40}}>
                 
+                <div className="article-createform-edit">
+                        <Edit
+                            className="article-createform-edit-l"
+                            value={data.content}
+                            options={{
+                                mode: 'markdown',
+                                theme: 'material',
+                                lineNumbers: true
+                            }}
+                            onChange={(editor, data, value) => {
+                                this.handleChange('content', value)
+                            }}
+                        />
+                    <div className="article-createform-edit-r">
+                        <Show 
+                            source={data.content}/>
+                    </div>
+                    
                 </div>
-                
             </div>
         )
     }
 }
-
-// 
-// <CodeMirror
-
-//                     value={data.content}
-//                     onChange={(value) => this.handleChange('content', value)}
-
-//                     options={options}
-//                 />  
+// 请上传690px * 290px的封面图

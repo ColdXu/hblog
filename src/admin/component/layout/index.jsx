@@ -30,12 +30,15 @@ const styles = theme => ({
     },
     appBar: {
       zIndex: theme.zIndex.drawer + 1,
+      boxShadow: 'none'
+
     },
     drawerPaper: {
       position: 'relative',
       width: drawerWidth,
       backgroundColor: '#fff',
-      border: 'none'
+      border: 'none',
+      boxShadow: '0 0px 5px 0 rgba(140, 144, 155, 0.15)',
     },
     content: {
       flexGrow: 1,
