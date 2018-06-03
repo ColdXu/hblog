@@ -42,14 +42,12 @@ export function putAdminArticle({
     id,
     title,
     content,
-    status,
     coverId,
     tagId,
 }) {
     return http.put(`admin/article/${id}`, {
         title,
         content,
-        status,
         coverId,
         tagId,
     })

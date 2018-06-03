@@ -4,8 +4,8 @@ import Paper from 'material-ui/Paper';
 import moment from 'moment';
 import Divider from 'material-ui';
 import { Link } from 'react-router-dom'
-import Content from '../../../../component/content';
-import { getMedia } from '../../../../../common/util/media';
+import Tag from '../../../../component/tag';
+import { Show } from '../../../../../common/component/markdown';
 import './index.less';
 
 
@@ -19,17 +19,26 @@ export default class extends React.Component {
                     <div className="home-list-box">
                         <div>
                             <Link to={`/article/${item.id}`} className="home-list-item-title">{item.title}</Link>
-                            <Content className="home-list-item-content" value={item.content}/>
                             <div className="home-list-item-footer">
                                 <div>
-                                    {moment(item.publishDate).format('YY年MM月DD日 HH:mm')}
+                                    发表于 {moment(item.publishDate).format('YY年MM月DD日')}
                                 </div>
-                                <div className="home-list-item-pv">
-                                    浏览：{item.pv}
+                                <span className="home-list-item-footer-line">
+                                    |
+                                </span>
+                                    <div className="home-list-item-pv">
+                                    浏览 {item.pv}
+                                    </div>
+                                <span className="home-list-item-footer-line">
+                                |
+                                </span>
+                                <div>
+                                    分类于 <Tag>{item.tagName}</Tag>
                                 </div>
+                                
                             </div>
+                            <Show className="home-list-item-content" value={item.content}/>
                         </div>
-                        <div className="home-list-cover" style={{background: 'url(' + getMedia(item.coverId)+ ')'}}></div>
                     </div>
                 </div>
             )

@@ -140,10 +140,9 @@ export default class extends React.Component {
                                 this.handleChange('content', value)
                             }}
                         />
-                    <div className="article-createform-edit-r">
                         <Show 
-                            source={data.content}/>
-                    </div>
+                            className="article-createform-edit-r"
+                            value={data.content}/>
                     
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import {UnControlled as CodeMirror} from 'react-codemirror2';
+import {Controlled as CodeMirror} from 'react-codemirror2';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import 'codemirror/mode/markdown/markdown.js';
@@ -14,7 +14,6 @@ export default class extends Base {
         const { children, className = '', value, onChange, ...resprops} = this.props;
 
         const classString = classnames(className)
-
         return (
             <CodeMirror
                 className={classString}
@@ -24,7 +23,7 @@ export default class extends Base {
                     theme: 'material',
                     lineNumbers: true
                 }}
-                onChange={onChange}
+                onBeforeChange={onChange}
             />
         )
     }

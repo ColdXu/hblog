@@ -5,7 +5,8 @@ import Content from '../../component/content';
 import Base from '../../../common/component/base';
 import history from '../../../common/util/history'
 import { getMedia } from '../../../common/util/media'
-// import List from './component/list'
+import { Show } from '../../../common/component/markdown';
+import Tag from '../../component/tag';
 import './detail.less';
 
 @connect(
@@ -20,6 +21,10 @@ export default class extends Base {
         this.props.dispatch({type: 'article/getArticle', payload: {id: this.props.match.params.id}})
     }
 
+    componentWillUnmount() {
+        this.props.dispatch({type: 'article/getArticle/success', payload: {data: {}}})
+    }
+
     render() {
         const { article } = this.props.article;
         return (
@@ -32,10 +37,23 @@ export default class extends Base {
                         {article.title}
                     </h1>
                     <div className="p-article-detail-describe">
-                        <span>{moment(article.publishDate).format('YY年MM月DD日 HH:mm')}</span>
-                        <span>浏览 {article.pv}</span>
+                        <div>
+                            发表于 {moment(article.publishDate).format('YY年MM月DD日')}
+                        </div>
+                        <span className="p-article-detail-describe-line">
+                            |
+                        </span>
+                        <div >
+                            浏览 {article.pv}
+                        </div>
+                        <span className="p-article-detail-describe-line">
+                            |
+                        </span>
+                        <div>
+                            分类于 <Tag className="p-article-detail-describe-tag">{article.tagName}</Tag>
+                        </div>
                     </div>
-                    <Content className="p-article-detail-content" value={article.content}></Content>
+                    <Show value={article.content}></Show>
                 </div>
             </div>
         )
