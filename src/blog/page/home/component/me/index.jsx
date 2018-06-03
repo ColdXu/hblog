@@ -4,7 +4,6 @@ import Paper from 'material-ui/Paper';
 import moment from 'moment';
 import Divider from 'material-ui';
 import { Link } from 'react-router-dom'
-import Content from '../../../../component/content';
 import './index.less';
 
 
@@ -12,7 +11,6 @@ export default class extends React.Component {
 
     render() {
         const { classes, data } = this.props;
-        console.log(data);
         
         return (
             <div className="home-me">

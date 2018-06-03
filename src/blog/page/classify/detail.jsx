@@ -1,7 +1,6 @@
 import { Grid, Typography, Button, TextField } from 'material-ui'
 import { connect } from 'react-redux'
 import moment from 'moment';
-import Content from '../../component/content';
 import Base from '../../../common/component/base';
 import history from '../../../common/util/history'
 
