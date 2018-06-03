@@ -9,7 +9,8 @@ import { withStyles } from 'material-ui/styles';
 import * as apiMedia from '../../../../../common/api/media';
 import { getMedia } from '../../../../../common/util/media';
 import classnames from 'classnames';
-import { Edit, Show } from '../../../../../common/component/markdown';
+import Show from '../../../../../common/component/markdown/show';
+import Edit from '../../../../../common/component/markdown/edit';
 import './index.less';
 
 

@@ -4,7 +4,7 @@ import moment from 'moment';
 import Base from '../../../common/component/base';
 import history from '../../../common/util/history'
 import { getMedia } from '../../../common/util/media'
-import { Show } from '../../../common/component/markdown';
+import Show from '../../../common/component/markdown/show';
 import Tag from '../../component/tag';
 import './detail.less';
 

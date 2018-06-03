@@ -5,7 +5,7 @@ import moment from 'moment';
 import Divider from 'material-ui';
 import { Link } from 'react-router-dom'
 import Tag from '../../../../component/tag';
-import { Show } from '../../../../../common/component/markdown';
+import Show from '../../../../../common/component/markdown/show';
 import './index.less';
 
 

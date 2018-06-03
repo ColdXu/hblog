@@ -2,6 +2,21 @@
 # yarn lockfile v1
 
 
+"@babel/helper-module-imports@^7.0.0-beta.34":
+  version "7.0.0-beta.49"
+  resolved "http://frontend.npm.xuebadev.com/@babel%2fhelper-module-imports/-/helper-module-imports-7.0.0-beta.49.tgz#41d7d59891016c493432a46f7464446552890c75"
+  dependencies:
+    "@babel/types" "7.0.0-beta.49"
+    lodash "^4.17.5"
+
+"@babel/types@7.0.0-beta.49":
+  version "7.0.0-beta.49"
+  resolved "http://frontend.npm.xuebadev.com/@babel%2ftypes/-/types-7.0.0-beta.49.tgz#b7e3b1c3f4d4cfe11bdf8c89f1efd5e1617b87a6"
+  dependencies:
+    esutils "^2.0.2"
+    lodash "^4.17.5"
+    to-fast-properties "^2.0.0"
+
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
   resolved "http://frontend.npm.xuebadev.com/@sindresorhus%2fis/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
@@ -569,6 +584,18 @@ babel-plugin-check-es2015-constants@^6.22.0:
   resolved "http://frontend.npm.xuebadev.com/babel-plugin-check-es2015-constants/-/babel-plugin-check-es2015-constants-6.22.0.tgz#35157b101426fd2ffd3da3f75c7d1e91835bbf8a"
   dependencies:
     babel-runtime "^6.22.0"
+
+babel-plugin-import@^1.7.0:
+  version "1.7.0"
+  resolved "http://frontend.npm.xuebadev.com/babel-plugin-import/-/babel-plugin-import-1.7.0.tgz#7da886c26d46a048bc9ed126890fa7e419a6133d"
+  dependencies:
+    "@babel/helper-module-imports" "^7.0.0-beta.34"
+
+babel-plugin-material-ui@^0.3.1:
+  version "0.3.1"
+  resolved "http://frontend.npm.xuebadev.com/babel-plugin-material-ui/-/babel-plugin-material-ui-0.3.1.tgz#aa7cddb8f3ab3eeb004243ed8b11bb6a7524cc9c"
+  dependencies:
+    lodash "4.17.4"
 
 babel-plugin-react-transform@^2.0.2:
   version "2.0.2"
@@ -4679,6 +4706,10 @@ lodash.without@~4.4.0:
   version "4.4.0"
   resolved "http://frontend.npm.xuebadev.com/lodash.without/-/lodash.without-4.4.0.tgz#3cd4574a00b67bae373a94b748772640507b7aac"
 
+lodash@4.17.4:
+  version "4.17.4"
+  resolved "http://frontend.npm.xuebadev.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
+
 lodash@^3.10.1:
   version "3.10.1"
   resolved "http://frontend.npm.xuebadev.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
@@ -7992,6 +8023,10 @@ to-arraybuffer@^1.0.0:
 to-fast-properties@^1.0.3:
   version "1.0.3"
   resolved "http://frontend.npm.xuebadev.com/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
+
+to-fast-properties@^2.0.0:
+  version "2.0.0"
+  resolved "http://frontend.npm.xuebadev.com/to-fast-properties/-/to-fast-properties-2.0.0.tgz#dc5e698cbd079265bc73e0377681a4e4e83f616e"
 
 to-object-path@^0.3.0:
   version "0.3.0"
