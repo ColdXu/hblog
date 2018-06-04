@@ -16,6 +16,6 @@ module.exports = merge(webpackCommon, {
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
             '__ENV__': JSON.stringify('prd'),
         }),
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
     ]
 })
