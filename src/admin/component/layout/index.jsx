@@ -48,7 +48,8 @@ const styles = theme => ({
     },
     toolbar: theme.mixins.toolbar,
     headbar: {
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        backgroundColor: '#24292e'
     }
   });
 

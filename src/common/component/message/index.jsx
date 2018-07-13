@@ -51,7 +51,7 @@ class Snack extends React.Component {
     render() {
         return(
             <Snackbar
-                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 SnackbarContentProps={{
                 'aria-describedby': 'message-id',
                 // className: this.props.classes[this.props.status]

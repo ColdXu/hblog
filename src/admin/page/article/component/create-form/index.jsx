@@ -6,6 +6,9 @@ import KeyboardVoice from 'material-ui-icons/KeyboardVoice';
 import Icon from 'material-ui/Icon';
 import Send from 'material-ui-icons/Send';
 import { withStyles } from 'material-ui/styles';
+import ExpandMore from 'material-ui-icons/ExpandMore';
+import ExpandLess from 'material-ui-icons/ExpandLess';
+import IconButton from 'material-ui/IconButton';
 import * as apiMedia from '../../../../../common/api/media';
 import { getMedia } from '../../../../../common/util/media';
 import classnames from 'classnames';
@@ -53,6 +56,10 @@ export default class extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            visibleUpload: false,
+        }
     }
 
     handleChange = (name, value) => {
@@ -67,6 +74,12 @@ export default class extends React.Component {
         this.props.onRelease();
     }
 
+    handleVisibleUpload = () => {
+        this.setState({
+            visibleUpload: !this.state.visibleUpload
+        })
+    }
+
     handleFileChange = (event) => {
         const { files } = event.target
         const formData = new FormData()
@@ -79,6 +92,7 @@ export default class extends React.Component {
 
     render() {
         const { classes, onChange, data, tagsOptions } = this.props;
+        const { visibleUpload } = this.state;
         const options = {
             mode: "markdown",
             theme: "monokai"
@@ -111,24 +125,34 @@ export default class extends React.Component {
                             </MenuItem>
                         ))}
                     </TextField>
+                    <IconButton onClick={this.handleVisibleUpload} aria-label="展开">
+                        {visibleUpload &&
+                            <ExpandLess/>
+                        }
+                        {!visibleUpload &&
+                            <ExpandMore/>
+                        }
+                    </IconButton>
                 </div>
-                <div className="article-createform-upload">
-                    {data.coverId && 
-                        <img src={getMedia(data.coverId)}/>
-                    }
-                    {!data.coverId &&
-                        <div className="article-createform-icon">
-                            <div>
-                            <FileUploadIcon
-                            className={classes.fileUploadIcon}
-                        ></FileUploadIcon>
+                {visibleUpload &&
+                    <div className="article-createform-upload">
+                        {data.coverId && 
+                            <img src={getMedia(data.coverId)}/>
+                        }
+                        {!data.coverId &&
+                            <div className="article-createform-icon">
+                                <div>
+                                <FileUploadIcon
+                                className={classes.fileUploadIcon}
+                            ></FileUploadIcon>
+                                </div>
                             </div>
-                        </div>
-                    }
-                    <Input type="file" className="article-createform-input" onChange={this.handleFileChange}></Input>
-                </div>
-                
+                        }
+                        <Input type="file" className="article-createform-input" onChange={this.handleFileChange}></Input>
+                    </div>
+                }
                 <div className="article-createform-edit">
+                
                         <Edit
                             className="article-createform-edit-l"
                             value={data.content}
@@ -151,3 +175,4 @@ export default class extends React.Component {
     }
 }
 // 请上传690px * 290px的封面图
+

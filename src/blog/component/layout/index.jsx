@@ -50,18 +50,18 @@ const styles = theme => ({
         path: '/',
         icon: HomeIcon,
       },
-      {
-        title: '分类',
-        key: 'classify',
-        path: '/classify',
-        icon: AddIcon,
-      },
-      {
-        title: 'ME',
-        key: 'me',
-        path: '/me',
-        icon: NoteIcon,
-      },
+    //   {
+    //     title: '分类',
+    //     key: 'classify',
+    //     path: '/classify',
+    //     icon: AddIcon,
+    //   },
+    //   {
+    //     title: 'ME',
+    //     key: 'me',
+    //     path: '/me',
+    //     icon: NoteIcon,
+    //   },
   ]
 
   @withRouter
