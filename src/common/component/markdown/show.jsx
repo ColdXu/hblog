@@ -49,8 +49,11 @@ export default class extends Base {
         const { className = '', value, ...resprops} = this.props;
         const classString = classnames('gitbook-markdown-body', className);
         return (
-            <div className={classString} dangerouslySetInnerHTML={{__html: this.md.render(value)}}>
+            <div className={classString}>
+              <div dangerouslySetInnerHTML={{__html: this.md.render(value)}}>
+              </div>
             </div>
+           
         )
     }
 }

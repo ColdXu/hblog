@@ -1,4 +1,3 @@
-// import { withStyles } from 'material-ui/styles';
 import { Grid, Typography, Button, TextField, Select, Chip, Input } from 'material-ui';
 import Delete from 'material-ui-icons/Delete';
 import FileUploadIcon from 'material-ui-icons/FileUpload';
