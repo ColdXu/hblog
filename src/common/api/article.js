@@ -2,22 +2,22 @@ import http from '../util/http';
 
 // 获取文章列表
 export function getArticleList() {
-    return http.get('article/list')
+    return http.get('article/list');
 }
 
 // 获取管理员文章列表
 export function getAdminArticleList() {
-    return http.get('admin/article/list')
+    return http.get('admin/article/list');
 }
 
 // 获取管理员详情文章
-export function getAdminArticle({id}) {
-    return http.get(`admin/article/${id}`)
+export function getAdminArticle({ id }) {
+    return http.get(`admin/article/${id}`);
 }
 
 // 获取详情文章
-export function getArticle({id}) {
-    return http.get(`article/${id}`)
+export function getArticle({ id }) {
+    return http.get(`article/${id}`);
 }
 
 // 创建文章
@@ -34,7 +34,7 @@ export function createAdminArticle({
         status,
         coverId,
         tagId,
-    })
+    });
 }
 
 // 修改文章
@@ -50,11 +50,10 @@ export function putAdminArticle({
         content,
         coverId,
         tagId,
-    })
+    });
 }
 
 // 修改博文状态
-export function putAdminArticleStatus({id, status}) {
-    return http.put(`admin/article/${id}/${status}`)
-} 
-
+export function putAdminArticleStatus({ id, status }) {
+    return http.put(`admin/article/${id}/${status}`);
+}

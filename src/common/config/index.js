@@ -1,16 +1,16 @@
 
-let env = __ENV__ || 'dev';
+const env = __ENV__ || 'dev';
 let API_BASE = '';
 
-switch(env) {
+switch (env) {
     case 'prd':
         API_BASE = '//api.coldxu.com/api/';
         break;
-    default: 
+    default:
         API_BASE = 'http://localhost:8000/api/';
         break;
 }
 
 export default {
-    API_BASE
-}
+    API_BASE,
+};

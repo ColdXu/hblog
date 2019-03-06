@@ -17,7 +17,11 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: [/node_modules/],
-                loader: 'babel-loader'
+                loader: 'babel-loader',
+                options: {
+                    // 开启缓存，明显提升打包速度
+                    cacheDirectory: true,
+                },
             },
             {
                 test: /\.(less|css)$/,

@@ -1,42 +1,77 @@
 {
-    "parser": "babel-eslint",
-    "extends": "airbnb",
-    "env": {
-      "browser": true
-    },
-    "rules": {
-      "arrow-body-style": [0],
-      "camelcase": [0],
-      "class-methods-use-this": [0],
-      "consistent-return": [0],
-      "generator-star-spacing": [0],
-      "global-require": [1],
-      "import/extensions": [0],
-      "import/no-extraneous-dependencies": [0],
-      "import/no-unresolved": [0],
-      "import/prefer-default-export": [0],
-      "jsx-a11y/no-static-element-interactions": [0],
-      "no-bitwise": [0],
-      "no-cond-assign": [0],
-      "no-else-return": [0],
-      "no-nested-ternary": [0],
-      "no-lonely-if": [0],
-      "no-restricted-syntax": [0],
-      "no-underscore-dangle": [0],
-      "no-unused-vars": [0],
-      "no-use-before-define": [0],
-      "react/forbid-prop-types": [0],
-      "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
-      "react/jsx-no-bind": [0],
-      "react/no-unused-prop-types": [1],
-      "react/prefer-stateless-function": [0],
-      "react/prop-types": [0],
-      "require-yield": [1]
-    },
-    "parserOptions": {
-      "ecmaFeatures": {
-        "experimentalObjectRestSpread": true
-      }
+  "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true,
+    "jest": true,
+    "es6": true
+  },
+  "globals": {
+    "__ENV__": false,
+    "__VERSION__": false,
+    "__DEBUG__": false
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
     }
+  },
+  "plugins": [
+    "react",
+    "babel"
+  ],
+  "rules": {
+    "indent": [
+      1,
+      4,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "react/jsx-indent": [
+      1,
+      4
+    ],
+    "react/jsx-indent-props": [
+      1,
+      4
+    ],
+    "func-names": 0,
+    "camelcase": 0,
+    "max-len": 0,
+    "guard-for-in": 0,
+    "class-methods-use-this": 0,
+    "prefer-destructuring": 0,
+    "function-paren-newline": 0,
+    "object-curly-newline": 0,
+    "no-param-reassign": 0,
+    "no-return-assign": 0,
+    "no-shadow": 0,
+    "no-plusplus": 0,
+    "no-mixed-operators": 0,
+    "no-restricted-syntax": 0,
+    "no-underscore-dangle": 0,
+    "no-nested-ternary": 0,
+    "import/extensions": 0,
+    "import/no-unresolved": 0,
+    "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": 0,
+    "react/prop-types": 0,
+    "react/sort-comp": 0,
+    "react/no-danger": 0,
+    "react/no-array-index-key": 0,
+    "react/jsx-no-target-blank": 0,
+    "react/no-direct-mutation-state": 2,
+    "react/prefer-stateless-function": 0,
+    "react/no-find-dom-node": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/media-has-caption": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/no-static-element-interactions": 0
   }
-  
+}

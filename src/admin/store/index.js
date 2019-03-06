@@ -36,7 +36,7 @@ const rootRun = function* () {
 };
 
 
-console.log(memo)
+console.log(memo);
 
 // 合并reduce
 export const reducer = combineReducers(memo.reducer);
