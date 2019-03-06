@@ -35,9 +35,7 @@ export default class extends React.Component {
                                 <div>
                                     分类于 <Tag>{item.tagName}</Tag>
                                 </div>
-                                
                             </div>
-                            <Show className="home-list-item-content" value={item.content}/>
                         </div>
                     </div>
                 </div>
@@ -56,3 +54,4 @@ export default class extends React.Component {
         )
     }
 }
+// <Show className="home-list-item-content" value={item.content}/>
