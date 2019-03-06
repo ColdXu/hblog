@@ -1,87 +1,94 @@
+import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
+import {
+    Layout, Menu, Breadcrumb, Icon,
+} from 'antd';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import Drawer from 'material-ui/Drawer';
 import MenuIcon from 'material-ui-icons/Menu';
 import { MenuList, MenuItem } from 'material-ui/Menu';
-import history from '../../../common/util/history'
 import { withRouter } from 'react-router-dom';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import HomeIcon from 'material-ui-icons/Home';
 import AddIcon from 'material-ui-icons/Add';
 import NoteIcon from 'material-ui-icons/Note';
-import { withStyles } from 'material-ui/styles'
+import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
+import history from '../../../common/util/history';
 import Base from '../../../common/component/base';
 
 import './index.less';
 
-const drawerWidth = 55;
-const styles = theme => ({
-    root: {
-      flexGrow: 1,
-      height: 430,
-      zIndex: 1,
-      overflow: 'hidden',
-      position: 'relative',
-      display: 'flex',
-    },
-    appBar: {
-      zIndex: theme.zIndex.drawer + 1,
-      boxShadow: 'none'
+const {
+    Header, Content, Footer, Sider,
+} = Layout;
+const SubMenu = Menu.SubMenu;
 
-    },
-    drawerPaper: {
-      position: 'relative',
-      width: drawerWidth,
-      backgroundColor: '#fff',
-      border: 'none',
-      boxShadow: '0 0px 5px 0 rgba(140, 144, 155, 0.15)',
-    },
-    content: {
-      flexGrow: 1,
-      backgroundColor: theme.palette.background.default,
-      padding: theme.spacing.unit * 3,
-      minWidth: 0, // So the Typography noWrap works
-    },
-    toolbar: theme.mixins.toolbar,
-    headbar: {
-        justifyContent: 'space-between',
-        backgroundColor: '#24292e'
-    }
-  });
-
-  const menuList = [
-      {
-        title: '首页',
-        key: 'home',
-        path: '/',
-        icon: HomeIcon,
-      },
-      {
-        title: '写作',
-        key: 'create',
-        path: '/article/create',
-        icon: AddIcon,
-      },
-      {
-        title: '博文列表',
-        key: 'list',
+const menuList = [
+    {
+        label: '博文列表',
         path: '/article',
-        icon: NoteIcon,
-      },
-  ]
+        icon: 'inbox',
+    },
+];
+
+
   @connect(
       state => ({
           user: state.user,
-          common: state.common
-      })
+          common: state.common,
+      }),
   )
-class Layout extends Base {
-    constructor(props) {
-        super(props)
+class LayoutCom extends Base {
+    state = {
+        menuSelectedKeys: [],
+    }
+
+    /**
+     * 触发菜单导航选中项
+     */
+    handleMenuSelect = (item) => {
+        this.setState({
+            menuSelectedKeys: [item.path],
+        });
+    }
+
+    /**
+     * 触发菜单导航单击
+     */
+    handleMenuClick = (item) => {
+        this.props.history.push(item.key);
+    }
+
+    renderMenu = () => {
+        const { menuSelectedKeys } = this.state;
+
+        const list = menuList.map(item => (
+            <Menu.Item
+                key={item.path}
+            >
+                {item.icon
+                    && <Icon type={item.icon} />
+                }
+                <span>{item.label}</span>
+            </Menu.Item>
+        ));
+
+        return (
+            <Menu
+                theme="dark"
+                mode="inline"
+                onSelect={this.handleMenuSelect}
+                onClick={this.handleMenuClick}
+                selectedKeys={menuSelectedKeys}
+                style={{ borderRight: 0 }}
+            >
+                {list}
+            </Menu>
+        );
     }
 
     handleListClick = (item) => {
@@ -90,54 +97,31 @@ class Layout extends Base {
         }
     }
 
-    renderList = () => {
-        return menuList.map((item, index) => {
-            return (
-                <MenuItem 
-                    selected={this.history.location.pathname == item.path} 
-                    onClick={() => {this.handleListClick(item)}} 
-                    key={index}
-                    button
-                >
-                    <ListItemIcon>
-                        <item.icon />
-                    </ListItemIcon>
-                </MenuItem>
-            )
-        })
-    }
-
     render() {
         const { children, classes, common } = this.props;
-        const list = this.renderList();
-
         return (
-            <div className="layout">
-                <AppBar position="absolute" className={classes.appBar}>
-                    <Toolbar
-                        className={classes.headbar}
-                    >
-                        <Typography type="title" color="inherit">
-                            BLOG / <span className="layout-head-text">博文管理</span>
-                        </Typography>
-                        <div>{common.layout.right}</div>
-                    </Toolbar>
-                </AppBar>
-                <Drawer
-                    variant="permanent"
-                    classes={{
-                        paper: classes.drawerPaper,
-                    }}
-                    >
-                        <div className={classes.toolbar} />
-                        <MenuList>
-                            {list}
-                        </MenuList>
-                </Drawer>
-            </div>
-        )
+            <Layout style={{ minHeight: '100vh' }}>
+                <Sider
+                    trigger={null}
+                    collapsible
+                    collapsed
+                >
+                    {this.renderMenu()}
+                </Sider>
+                <Layout>
+                    <Header style={{ background: '#fff', padding: 0 }} />
+                    <Content style={{ margin: '0 16px' }}>
+                        <Breadcrumb style={{ margin: '16px 0' }}>
+                            <Breadcrumb.Item>User</Breadcrumb.Item>
+                            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+                        </Breadcrumb>
+                        <div>{this.props.children}</div>
+                    </Content>
+                </Layout>
+            </Layout>
+        );
     }
-}
+  }
 
 
-export default withStyles(styles)(Layout)
+export default LayoutCom;

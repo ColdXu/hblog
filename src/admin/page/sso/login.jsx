@@ -30,7 +30,7 @@ class Login extends React.Component {
                     <div className="grid">
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Item>
-                                {getFieldDecorator('userName', {
+                                {getFieldDecorator('username', {
                                     rules: [{
                                         required: true,
                                         message: '请输入用户名',
